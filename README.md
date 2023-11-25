@@ -1,18 +1,18 @@
 
 <p align="center">  
-<img width="100" src="https://www.gramflow.pro/logo.svg">  
-<h1 align="center">GramFlow</h1>  
-<h4 align="center">Sell at scale on Instagram</h4>  
+<img width="100" src="https://www.LumoFlow.com/logo.svg">  
+<h1 align="center">LumoFlo</h1>  
+<h4 align="center">Efortless Sales on Instagram</h4>  
 </p>  
   
-GramFlow enables sellers on Instagram to sell at scale. It is a platform that enables sellers to manage their inventory,  
-orders, and customers. GramFlow is a SaaS product that is built for the Indian market.  
+LumoFlow enables sellers on Instagram to sell at scale. It is a platform that enables sellers to manage their inventory,  
+orders, and customers. LumoFlow is a SaaS product that is built for the Indian market.  
   
-## Problem that GramFlow Solves  
+## Problem that LumoFlow Solves  
   
 Instagram sellers often either have a page on instgram or have a website that they use to sell their products. They  
 often use a combination of WhatsApp and Instagram to manage their orders. This is a very inefficient way of managing  
-orders and customers. GramFlow solves this problem by providing a platform that enables sellers to manage their  
+orders and customers. LumoFlow solves this problem by providing a platform that enables sellers to manage their  
 inventory, orders, and customers all via a single platform i.e. Instagram.  
   
 Users just have to upload products to their Instagram pages as they usually do and we manage the rest.  
@@ -37,7 +37,7 @@ emails. The customer data is saved for future orders.
   
 ## Who is this for?  
   
-GramFlow is a solution designed for Instagram sellers that do not want to use/ do not have access to Instagram's  
+LumoFlow is a solution designed for Instagram sellers that do not want to use/ do not have access to Instagram's  
 E-commerce offerings and do not want to have a E-commerce website since they are expensive and hard to manage, and also  
 requires duplication of posts on the website and Instagram.  
   
@@ -56,30 +56,30 @@ The processing is quite simple, here are the steps:
 5. The admin then creates a shipment directly on the dashboard. *We only support Delhivery at the moment.*  
 6. The admin then ships the order and the customer is notified via email and SMS.  
   
-<h2 align="center">GramFlow Admin</h2>  
+<h2 align="center">LumoFlow Admin</h2>  
 <p align="center">  
-The GramFlow Admin is a beautiful dashboard that enables sellers to manage their inventory, orders, and customers.  
+The LumoFlow Admin is a beautiful dashboard that enables sellers to manage their inventory, orders, and customers.  
 </p>  
 <p align="center">  
-<img src="https://gramflow.pro/SCR-20231010-fux.png" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-fve.png" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-fx0.png" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-fxu.jpeg" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-fzp.png" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-g3o.png" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-g4j.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-fux.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-fve.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-fx0.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-fxu.jpeg" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-fzp.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-g3o.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-g4j.png" width="300">  
 </p>  
   
-<h2 align="center">GramFlow Web (Customer)</h2>  
+<h2 align="center">LumoFlow Web (Customer)</h2>  
 <p align="center">  
-Gramflow Web is a customer facing web-app that enables customers to submit their details and track their orders.  
+LumoFlow Web is a customer facing web-app that enables customers to submit their details and track their orders.  
 </p>  
 <p align="center">  
   
-<img src="https://gramflow.pro/SCR-20231010-gek.png" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-gfl.png" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-ggq.png" width="300">  
-<img src="https://gramflow.pro/SCR-20231010-ghb.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-gek.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-gfl.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-ggq.png" width="300">  
+<img src="https://LumoFlow.pro/SCR-20231010-ghb.png" width="300">  
 </p>  
   
 ## What is our tech stack?  
@@ -136,9 +136,9 @@ We know that the setup this complex can be a bit overwhelming, so we are working
 need our help in setting this up, please schedule a call below:  
 https://cal.com/imprakharshukla  
   
-### Want us to fully-manage your GramFlow instance?  
+### Want us to fully-manage your LumoFlow instance?  
   
-We also offer a fully-managed GramFlow instance where we handle everything from the setup to the maintenance. Please  
+We also offer a fully-managed LumoFlow instance where we handle everything from the setup to the maintenance. Please  
 reach out to us using the form below to get started:  
   
 [Contact Us](https://6h36v1x0q8s.typeform.com/to/bXV3pMAg)
