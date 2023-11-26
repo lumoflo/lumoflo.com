@@ -24,8 +24,12 @@ export const env = createEnv({
     // CF_FILES_BUCKET_NAME: z.string(),
 
     //clerk
-
     CLERK_SECRET_KEY: z.string(),
+    CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
+
+    //logsnag
+
+    LOG_SNAG_API_TOKEN: z.string(),
 
     // //resend
     // RESEND_API_KEY: z.string(),
@@ -71,12 +75,14 @@ export const env = createEnv({
   runtimeEnv: {
     // clerk
 
+    LOG_SNAG_API_TOKEN: process.env.LOG_SNAG_API_TOKEN,
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL:
       process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
+    CLERK_WEBHOOK_SIGNING_SECRET: process.env.CLERK_WEBHOOK_SIGNING_SECRET,
 
     // //prisma
     // DATABASE_URL: process.env.DATABASE_URL,

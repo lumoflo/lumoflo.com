@@ -2,7 +2,7 @@ import * as z from "zod"
 import { CompleteOrders, RelatedOrdersModel } from "./index"
 
 export const PickupsModel = z.object({
-  id: z.string(),
+  id: z.string().uuid(),
   pickup_id: z.number().int(),
   pickup_location: z.string(),
   pickup_date: z.string(),

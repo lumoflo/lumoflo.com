@@ -18,6 +18,7 @@ import {
   Pizza,
   Plus,
   Settings,
+  ShoppingBag,
   ShoppingCart,
   SunMedium,
   Trash,
@@ -32,6 +33,7 @@ export type Icon = LucideIcon;
 export const Icons = {
   logo: Command,
   close: X,
+  shoppingBag: ShoppingBag,
   spinner: Loader2,
   shoppingCart: ShoppingCart,
   chevronLeft: ChevronLeft,

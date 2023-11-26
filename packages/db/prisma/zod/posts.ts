@@ -2,7 +2,7 @@ import * as z from "zod"
 import { CompleteSlides, RelatedSlidesModel, CompleteStores, RelatedStoresModel } from "./index"
 
 export const PostsModel = z.object({
-  id: z.string(),
+  id: z.string().uuid(),
   post_link: z.string(),
   caption: z.string(),
   post_created_at: z.date(),

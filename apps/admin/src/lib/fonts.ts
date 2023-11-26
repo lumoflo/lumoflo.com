@@ -6,9 +6,7 @@ import {
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap",
-  adjustFontFallback: false,
-});
+})
 
 export const fontMono = FontMono({
   subsets: ["latin"],

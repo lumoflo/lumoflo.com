@@ -2,10 +2,12 @@ import * as z from "zod"
 import { CompleteStores, RelatedStoresModel } from "./index"
 
 export const UsersModel = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   name: z.string(),
   created_at: z.date(),
   updated_at: z.date(),
+  email: z.string(),
+  verified: z.boolean(),
 })
 
 export interface CompleteUsers extends z.infer<typeof UsersModel> {

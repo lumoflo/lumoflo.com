@@ -1,3 +1,5 @@
+import localFont from "next/font/local";
+
 import { TailwindIndicator } from "@gramflow/ui";
 import { cn } from "@gramflow/utils";
 
@@ -9,6 +11,12 @@ import { Toaster } from "sonner";
 
 import { fontSans } from "~/lib/fonts";
 import QueryProvider from "~/providers/query-provider";
+
+// Font files can be colocated inside of `pages`
+const fontHeading = localFont({
+  src: "../assets/fonts/CalSans-SemiBold.woff2",
+  variable: "--font-heading",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -76,7 +84,8 @@ export default async function RootLayout({
           <body
             className={cn(
               "min-h-screen bg-background font-sans antialiased",
-              fontSans.className,
+              fontSans.variable,
+              fontHeading.variable,
             )}
           >
             <ThemeProvider attribute="class" defaultTheme="light" enableSystem>

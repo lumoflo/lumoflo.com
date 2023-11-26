@@ -29,6 +29,7 @@
     "@gramflow/eslint-config": "workspace:*",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@manypkg/cli": "^0.20.0",
+    "@prisma/client": "^4.13.0",
     "@types/prettier": "^2.7.3",
     "eslint": "^8.47.0",
     "prettier": "^2.8.8",

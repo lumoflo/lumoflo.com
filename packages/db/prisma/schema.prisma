@@ -12,13 +12,15 @@ datasource db {
 }
 
 model Users {
-  id         String   @id @default(uuid()) /// @zod.uuid()
+  id         String   @id
   name       String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   stores     Stores[]
+  email      String   @unique
+  verified   Boolean  @default(false)
 
-  @@index([id])
+  @@index([id, email])
 }
 
 model Stores {
@@ -38,7 +40,7 @@ model Stores {
 }
 
 model Posts {
-  id              String   @id @default(uuid())
+  id              String   @id @default(uuid())/// @zod.uuid()
   post_link       String   @unique
   caption         String
   slides          Slides[]
@@ -53,7 +55,7 @@ model Posts {
 }
 
 model Slides {
-  id             String  @id @default(uuid())
+  id             String  @id @default(uuid())/// @zod.uuid()
   parent_post_id String  @unique
   post_link      String  @unique
   orders         Orders? @relation(fields: [order_id], references: [id])
@@ -90,7 +92,7 @@ model Orders {
 }
 
 model Customers {
-  id                 String   @id @default(uuid())
+  id                 String   @id @default(uuid())/// @zod.uuid()
   name               String
   email              String
   phone_no           String
@@ -111,7 +113,7 @@ model Customers {
 }
 
 model Pickups {
-  id              String   @id @default(uuid())
+  id              String   @id @default(uuid())/// @zod.uuid()
   pickup_id       Int      @unique
   pickup_location String
   pickup_date     String
@@ -121,7 +123,7 @@ model Pickups {
 }
 
 model Otp {
-  id          String     @id @default(cuid())
+  id          String     @id @default(uuid())/// @zod.uuid()
   email       String
   otp         String
   order_id    String
