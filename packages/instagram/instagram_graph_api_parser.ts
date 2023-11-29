@@ -5,6 +5,14 @@ enum MediaTypeEnum {
   IMAGE = "IMAGE",
   VIDEO = "VIDEO",
 }
+interface MediaData {
+  id: string;
+  permalink: string;
+  media_url: string;
+  caption: string;
+  media_type: "CAROUSEL_ALBUM" | "IMAGE" | "VIDEO";
+  timestamp: string;
+}
 
 export const CursorsSchema = z.object({
   before: z.string(),
@@ -25,23 +33,21 @@ export const DaumSchema = z.object({
   permalink: z.string(),
 });
 
-export const PagingSchema = z.object({
-  cursors: CursorsSchema,
-  next: z.string(),
-});
+export const PagingSchema = z
+  .object({
+    cursors: CursorsSchema,
+    next: z.string().optional(),
+  })
+  
 
 export const RootSchema = z.object({
   data: z.array(DaumSchema),
-  paging: PagingSchema.nullable(),
+  paging: PagingSchema.optional(),
 });
 
 export const ChildRootSchema = z.object({
   data: z.array(DaumSchema),
 });
-
-interface FinalObject {
-  [key: string]: { posts: string[]; caption: string; timestamp: string };
-}
 
 // Function to extract data from the JSON response
 function extractData(data: z.infer<typeof DaumSchema>[]) {
@@ -51,59 +57,6 @@ function extractData(data: z.infer<typeof DaumSchema>[]) {
   }
 
   return extractedData;
-}
-
-const processedParents: Record<string, boolean> = {};
-
-export const getAllMediaFromInstagramGraphApiWithPagination = async ({
-  fields = ["id", "media_type", "media_url", "permalink", "caption"],
-  accessToken,
-  postNumber,
-}: {
-  fields?: string[];
-  accessToken: string;
-  postNumber?: number;
-}) => {
-  try {
-    const initialUrl = `https://graph.instagram.com/me/media?fields=${fields.join(
-      ",",
-    )}&access_token=${accessToken}`;
-
-    const response = await fetch(initialUrl); // Fetch initial data
-    const initialData = (await response.json()) as Root;
-    const { data } = initialData;
-    extractData(postNumber ? data.slice(0, postNumber) : data); // Extract data from the initial response
-
-    for (const parent of extractedData) {
-      const permalinkId = parent.permalink.split("/p/")[1]?.split("/")[0] ?? "";
-      if (permalinkId.length === 0) {
-        console.log(`${parent.permalink} is not a post`);
-        continue;
-      }
-      if (!processedParents[permalinkId]) {
-        const childData = await fetchParentData(parent.id, token);
-        finalData.push({
-          [permalinkId]: {
-            posts: childData,
-            caption: parent.caption,
-            timestamp: parent.timestamp,
-          },
-        });
-        processedParents[permalinkId] = true; // Mark this parent post as processed
-      }
-    }
-  } catch (error) {
-    console.error("Error fetching initial data:", error);
-  }
-};
-
-interface MediaData {
-  id: string;
-  permalink: string;
-  media_url: string;
-  caption: string;
-  media_type: "CAROUSEL_ALBUM" | "IMAGE" | "VIDEO";
-  timestamp: string;
 }
 
 export async function getAllParentMediaFromInstagram({
@@ -186,3 +139,30 @@ export async function getChildrenMediaFromInstagram({
   }
   return mediaData;
 }
+
+export const getParentAndChildrenMediaFromInstagram = async ({
+  limit = 100,
+  accessToken,
+}: {
+  limit?: number;
+  accessToken: string;
+}) => {
+  const parentMedia = await getAllParentMediaFromInstagram({
+    accessToken,
+  });
+  console.log("parentMedia:", parentMedia);
+  const parentMediaWithChildren = await Promise.all(
+    parentMedia.map(async (item) => {
+      const childrenMedia = await getChildrenMediaFromInstagram({
+        accessToken,
+        parentPostId: item.id,
+        parentCaption: item.caption,
+      });
+      return {
+        ...item,
+        childrenMedia,
+      };
+    }),
+  );
+  return parentMediaWithChildren.slice(0, limit);
+};
