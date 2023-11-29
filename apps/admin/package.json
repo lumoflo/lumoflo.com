@@ -11,7 +11,7 @@
     "start": "pnpm with-env next start",
     "type-check": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --",
-    "trigger-dev": "doppler run --mount .env -- pnpm dlx @trigger.dev/cli@latest dev",
+    "trigger-dev": "doppler run --mount .env -- pnpm dlx @trigger.dev/cli@latest dev -p 3000",
     "test": "doppler run --config=test -- jest",
     "supabase-gen": "doppler run -- pnpm dlx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID --schema public > types/supabase.ts"
   },
@@ -23,6 +23,8 @@
     "@gramflow/auth": "workspace:*",
     "@gramflow/db": "workspace:*",
     "@gramflow/email": "workspace:*",
+    "@gramflow/instagram": "workspace:^",
+    "@gramflow/kv": "workspace:^",
     "@gramflow/tailwind-config": "workspace:*",
     "@gramflow/ui": "workspace:*",
     "@gramflow/utils": "workspace:*",
@@ -39,8 +41,9 @@
     "@testing-library/jest-dom": "^6.1.3",
     "@testing-library/react": "^14.0.0",
     "@tremor/react": "^3.7.9",
-    "@trigger.dev/nextjs": "^2.2.1",
-    "@trigger.dev/sdk": "^2.2.1",
+    "@trigger.dev/nextjs": "^2.2.7",
+    "@trigger.dev/react": "^2.2.7",
+    "@trigger.dev/sdk": "^2.2.7",
     "@trigger.dev/slack": "^2.2.1",
     "@trigger.dev/supabase": "^2.2.1",
     "@uploadthing/react": "^5.7.0",
@@ -97,6 +100,6 @@
     "uuid": "^9.0.0"
   },
   "trigger.dev": {
-    "endpointId": "reskinn-store-c9hq"
+    "endpointId": "lumoflow-mQTb"
   }
 }
