@@ -13,7 +13,7 @@ export const config = {
      * 3. /_static (inside /public)
      * 4. all root files inside /public (e.g. /favicon.ico)
      */
-    "/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)",
+    "/((?!.*\\..*|_next|_static/|_vercel|[\w-]+\.\w+).*)", "/", "/(api|trpc)(.*)"
   ],
 };
 
@@ -78,6 +78,6 @@ export default authMiddleware({
     "/api/status",
     "/api/uploadthing",
     "/api/slides",
-    "/"
+    "/",
   ],
 });
