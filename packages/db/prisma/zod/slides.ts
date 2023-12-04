@@ -3,15 +3,17 @@ import { CompleteOrders, RelatedOrdersModel, CompletePosts, RelatedPostsModel } 
 
 export const SlidesModel = z.object({
   id: z.string().uuid(),
-  parent_post_id: z.string(),
   post_link: z.string(),
+  slide_image_url: z.string(),
+  post_caption: z.string(),
   order_id: z.string().nullish(),
-  post_id: z.string().nullish(),
+  post_id: z.string(),
+  post_timestamp: z.date(),
 })
 
 export interface CompleteSlides extends z.infer<typeof SlidesModel> {
   orders?: CompleteOrders | null
-  posts?: CompletePosts | null
+  posts: CompletePosts
 }
 
 /**
@@ -21,5 +23,5 @@ export interface CompleteSlides extends z.infer<typeof SlidesModel> {
  */
 export const RelatedSlidesModel: z.ZodSchema<CompleteSlides> = z.lazy(() => SlidesModel.extend({
   orders: RelatedOrdersModel.nullish(),
-  posts: RelatedPostsModel.nullish(),
+  posts: RelatedPostsModel,
 }))

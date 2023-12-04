@@ -55,13 +55,15 @@ model Posts {
 }
 
 model Slides {
-  id             String  @id @default(uuid()) /// @zod.uuid()
-  parent_post_id String  @unique
-  post_link      String  @unique
-  orders         Orders? @relation(fields: [order_id], references: [id])
-  order_id       String?
-  posts          Posts?  @relation(fields: [post_id], references: [id])
-  post_id        String?
+  id              String   @id @default(uuid()) /// @zod.uuid()
+  post_link       String
+  slide_image_url String
+  post_caption    String
+  orders          Orders?  @relation(fields: [order_id], references: [id])
+  order_id        String?
+  posts           Posts    @relation(fields: [post_id], references: [id])
+  post_id         String
+  post_timestamp  DateTime
 }
 
 model Orders {

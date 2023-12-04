@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 
 import { env } from "~/env.mjs";
-import { db } from "~/lib/prismaClient";
+import { db } from "@gramflow/db";
 
 const apiBaseUrl = "https://graph.instagram.com/v17.0/";
 
@@ -120,8 +120,6 @@ async function fetchInitialData(postNumber: number, token: string) {
 
 export const GET = async (req: Request) => {
   try {
-    // get the count from the query
-    // await kv.set("total_posts", 84);
     const { userId }: { userId: string | null } = auth();
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

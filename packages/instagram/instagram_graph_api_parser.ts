@@ -1,4 +1,3 @@
-import { lutimes } from "fs";
 import { z } from "zod";
 
 enum MediaTypeEnum {
@@ -18,7 +17,7 @@ interface MediaData {
 export const CursorsSchema = z.object({
   before: z.string(),
   after: z.string(),
-});
+});   
 
 export const ChildSchema = z.object({
   media_url: z.string(),
@@ -85,7 +84,6 @@ export async function getAllParentMediaFromInstagram({
   )}&access_token=${accessToken}`;
 
   // If we have a postPermaLink, then we need to get the specific post instead of all posts
-
   let limitNumber = 0;
   while (nextPage) {
     const response = await fetch(nextPage);
@@ -103,10 +101,6 @@ export async function getAllParentMediaFromInstagram({
             return [foundPost];
           }
         } else {
-          console.log({
-            limitNumber,
-            limit,
-          });
           if (limitNumber <= limit) {
             mediaData.push(...extractedData.slice(0, limit - limitNumber));
             limitNumber += extractedData.length;
@@ -142,9 +136,6 @@ export async function getChildrenMediaFromInstagram({
   let url = `https://graph.instagram.com/${parentPostId}/children?fields=${fields.join(
     ",",
   )}&access_token=${accessToken}`;
-
-  console.log("URL:", url);
-
   const response = await fetch(url);
   const dataFromApi = await response.json();
   const initialData = ChildRootSchema.parse(dataFromApi);
@@ -191,7 +182,6 @@ export const searchPostsFromInstagram = async ({
     accessToken,
     postPermalink,
   });
-  console.log("parentMedia:", parentMedia);
   if (!includeChildren) {
     return parentMedia;
   }
@@ -212,7 +202,6 @@ export const searchPostsFromInstagram = async ({
 };
 
 export const getParentAndChildrenMediaFromInstagram = async ({
-  limit = 100,
   accessToken,
 }: {
   limit?: number;
@@ -221,7 +210,6 @@ export const getParentAndChildrenMediaFromInstagram = async ({
   const parentMedia = await getAllParentMediaFromInstagram({
     accessToken,
   });
-  console.log("parentMedia:", parentMedia);
   const parentMediaWithChildren = await Promise.all(
     parentMedia.map(async (item) => {
       const childrenMedia = await getChildrenMediaFromInstagram({
@@ -235,5 +223,5 @@ export const getParentAndChildrenMediaFromInstagram = async ({
       };
     }),
   );
-  return parentMediaWithChildren.slice(0, limit);
+  return parentMediaWithChildren;
 };
