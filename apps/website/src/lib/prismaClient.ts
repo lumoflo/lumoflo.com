@@ -1,3 +1,4 @@
+// @ts-ignore
 import {COURIER, PrismaClient, Status} from "@prisma/client";
 
 const globalForPrisma = globalThis as { prisma?: PrismaClient };
