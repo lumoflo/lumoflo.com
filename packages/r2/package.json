@@ -1,0 +1,20 @@
+{
+  "name": "@gramflow/r2",
+  "version": "0.1.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.400.0",
+    "@aws-sdk/s3-request-presigner": "^3.400.0",
+    "@gramflow/utils": "workspace:*",
+    "zod": "^3.21.4",
+    "aws-sdk": "^2.1440.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.5",
+    "dotenv-cli": "^7.2.1",
+    "typescript": "^5.0.4"
+  }
+}

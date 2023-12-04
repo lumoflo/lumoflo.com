@@ -26,6 +26,7 @@ import {
   User,
   X,
   type Icon as LucideIcon,
+  CheckCircle,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -54,6 +55,7 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  checkCircle: CheckCircle,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

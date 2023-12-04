@@ -5,7 +5,7 @@ import { InstagramMediaCount } from "@gramflow/instagram";
 import { KvMediaCountFetcher } from "@gramflow/kv";
 
 import { env } from "~/env.mjs";
-import { db } from "~/lib/prismaClient";
+import { db } from "@gramflow/db";
 import { client } from "~/trigger";
 
 const instagramResponseSchema = z.object({

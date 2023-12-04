@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { auth, useUser } from "@clerk/nextjs";
 
+import { db } from "@gramflow/db";
 import {
   Button,
   Card,
@@ -12,7 +13,6 @@ import {
 
 import { DashboardHeader } from "~/components/header";
 import { DashboardShell } from "~/components/shell";
-import { db } from "@gramflow/db";
 
 //get clerk user
 const { userId }: { userId: string | null } = auth();
@@ -45,9 +45,9 @@ export default function Page() {
             </CardHeader>
             <CardContent className="space-y-2">
               <p className="text-sm">{store.subdomain}.lumoflo.com</p>
-              <div className="flex space-x-2 items-center">
-              <p className="text-sm">Active</p>
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+              <div className="flex items-center space-x-2">
+                <p className="text-sm">Active</p>
+                <div className="h-2 w-2 rounded-full bg-green-500"></div>
               </div>
             </CardContent>
             <CardFooter>

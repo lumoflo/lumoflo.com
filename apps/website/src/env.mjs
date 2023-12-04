@@ -15,12 +15,7 @@ export const env = createEnv({
     UPSTASH_URL: z.string(),
     UPSTASH_TOKEN: z.string(),
 
-    //cloudlfare
-    CF_ACCESS_KEY_ID: z.string(),
-    CF_SECRET_ACCESS_KEY: z.string(),
-    CF_ACCOUNT_ID: z.string(),
-    CF_IMAGES_BUCKET_NAME: z.string(),
-    CF_FILES_BUCKET_NAME: z.string(),
+
 
     //clerk
     CLERK_SECRET_KEY: z.string(),
@@ -82,7 +77,6 @@ export const env = createEnv({
    */
   runtimeEnv: {
     // clerk
-
     LOG_SNAG_API_TOKEN: process.env.LOG_SNAG_API_TOKEN,
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL:
@@ -96,13 +90,6 @@ export const env = createEnv({
     //prisma
     DATABASE_URL: process.env.DATABASE_URL,
     DIRECT_URL: process.env.DIRECT_URL,
-
-    // //cloudflare
-    CF_FILES_BUCKET_NAME: process.env.CF_FILES_BUCKET_NAME,
-    CF_ACCESS_KEY_ID: process.env.CF_ACCESS_KEY_ID,
-    CF_SECRET_ACCESS_KEY: process.env.CF_SECRET_ACCESS_KEY,
-    CF_ACCOUNT_ID: process.env.CF_ACCOUNT_ID,
-    CF_IMAGES_BUCKET_NAME: process.env.CF_IMAGES_BUCKET_NAME,
 
     // //instagram
     // INSTAGRAM_TOKEN: process.env.INSTAGRAM_TOKEN,

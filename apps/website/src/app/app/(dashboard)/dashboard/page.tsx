@@ -13,7 +13,7 @@ import {
 
 import { DashboardHeader } from "~/components/header";
 import { DashboardShell } from "~/components/shell";
-import { db } from "~/lib/prismaClient";
+import { db } from "@gramflow/db";
 
 //get clerk user
 const { userId }: { userId: string | null } = auth();
