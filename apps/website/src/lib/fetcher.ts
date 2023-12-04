@@ -11,7 +11,7 @@ export async function getSiteData(domain: string) {
     return await unstable_cache(
         async () => {
             return db.stores.findUnique({
-                where: subdomain ? { subdomain } : { customDomain: domain },
+                where: subdomain ? { subdomain: subdomain } : { customDomain: domain },
                 include: { user: true },
             });
         },
