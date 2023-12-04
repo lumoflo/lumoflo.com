@@ -9,10 +9,11 @@ import { cn } from "@gramflow/utils"
 
 interface MobileNavProps {
   items: MainNavItem[]
+  logo?: React.ReactNode
   children?: React.ReactNode
 }
 
-export function MobileNav({ items, children }: MobileNavProps) {
+export function MobileNav({ items, logo, children }: MobileNavProps) {
   useLockBody()
 
   return (
@@ -23,8 +24,13 @@ export function MobileNav({ items, children }: MobileNavProps) {
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
         <Link href="/" className="flex items-center space-x-2">
-          <Icons.logo />
-          <span className="font-bold">{siteConfig.name}</span>
+          {
+            logo ? logo :
+            <>
+              <Icons.logo />
+              <span className="font-bold">{siteConfig.name}</span>
+            </>
+          }
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">
           {items.map((item, index) => (

@@ -25,7 +25,7 @@ export const env = createEnv({
     //clerk
     CLERK_SECRET_KEY: z.string(),
     CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
-    CLERK_DEV_JWT: z.string(),
+    CLERK_JWT: z.string(),
 
     //logsnag
 
@@ -91,7 +91,7 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
     CLERK_WEBHOOK_SIGNING_SECRET: process.env.CLERK_WEBHOOK_SIGNING_SECRET,
-    CLERK_DEV_JWT: process.env.CLERK_DEV_JWT,
+    CLERK_JWT: process.env.CLERK_JWT,
 
     //prisma
     DATABASE_URL: process.env.DATABASE_URL,

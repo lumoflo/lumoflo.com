@@ -4,9 +4,10 @@ import {notFound} from "next/navigation";
 import Image from "next/image";
 import {getSiteData} from "~/lib/fetcher";
 import {env} from "~/env.mjs";
+import * as React from "react";
 
 export async function generateStaticParams() {
-    const allSites = await db.site.findMany({
+    const allSites = await db.stores.findMany({
         select: {
             subdomain: true,
             customDomain: true,
@@ -44,33 +45,18 @@ export default async function SiteHomePage({
 
     return (
         <>
-            <div className="ease left-0 right-0 top-0 z-30 flex h-16 bg-white transition-all duration-150 dark:bg-black dark:text-white">
-                <div className="mx-auto flex h-full max-w-screen-xl items-center justify-center space-x-5 px-10 sm:px-20">
-                    <Link href="/" className="flex items-center justify-center">
-                        <div className="inline-block h-8 w-8 overflow-hidden rounded-full align-middle">
-                            <Image
-                                alt={data.name || ""}
-                                height={40}
-                                src={"https://unsplash.it/40/40"}
-                                width={40}
-                            />
-                        </div>
-                        <span className="ml-3 inline-block truncate font-title font-medium">
-              {data.name}
-            </span>
-                    </Link>
-                </div>
-            </div>
-
             <div className="mt-20">
                 <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-3xl mx-auto">
+                    <div className="mx-auto">
                         <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
-                            {data.name}
+                            Store Page for - {data.name}
                         </h1>
-                        <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
-                            {data.description}
-                        </p>
+                        <h1 className="text-xl font-light text-gray-900 dark:text-white sm:text-xl flex flex-row flex-wrap items-center mt-2">
+                            powered by&nbsp;
+                            <Link className={"text-indigo-500 flex flex-row items-center font-semibold"} href={"https://lumoflo.com"}>
+                                <img src="/cl_logo.svg" className="h-4" alt="Logo"/>.com
+                            </Link>
+                        </h1>
                     </div>
                 </div>
             </div>

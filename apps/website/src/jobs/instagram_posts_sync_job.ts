@@ -53,7 +53,7 @@ client.defineJob({
               await io.logger.info(`Difference in posts: ${diff}`);
               await fetch(`/api/instagram?count=${diff}?username=${username}`, {
                 headers: {
-                  Authorization: `Bearer ${env.CLERK_DEV_JWT}`,
+                  Authorization: `Bearer ${env.CLERK_JWT}`,
                 },
               });
             }
