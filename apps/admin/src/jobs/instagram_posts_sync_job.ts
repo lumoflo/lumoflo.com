@@ -5,7 +5,7 @@ import { InstagramMediaCount } from "@gramflow/instagram";
 import { KvMediaCountFetcher } from "@gramflow/kv";
 
 import { env } from "~/env.mjs";
-import { db } from "~/lib/prismaClient";
+import { db } from "@gramflow/db";
 import { client } from "~/trigger";
 
 const instagramResponseSchema = z.object({
@@ -53,7 +53,7 @@ client.defineJob({
               await io.logger.info(`Difference in posts: ${diff}`);
               await fetch(`/api/instagram?count=${diff}?username=${username}`, {
                 headers: {
-                  Authorization: `Bearer ${env.CLERK_DEV_JWT}`,
+                  Authorization: `Bearer ${env.CLERK_JWT}`,
                 },
               });
             }

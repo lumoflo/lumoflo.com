@@ -6,7 +6,7 @@ export default authMiddleware({
     "/api/trigger",
     "/api/status",
     "/api/uploadthing",
-    "/api/status"
+    "/api/slides",
   ],
 });
 export const config = {
