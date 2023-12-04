@@ -171,15 +171,16 @@ export const GET = async (req: Request) => {
             post_link: "https://www.instagram.com/p/" + parent,
           },
         });
-        item[parent]?.posts.forEach(async (post) => {
-          await db.slides.create({
-            data: {
-              parent_post_id: "https://www.instagram.com/p/" + parent,
-              post_link: post,
-              post_id: prismaPost.id,
-            },
-          });
-        });
+        //todo fix this
+        // item[parent]?.posts.forEach(async (post) => {
+        //   await db.slides.create({
+        //     data: {
+        //
+        //       post_link: post,
+        //       post_id: prismaPost.id,
+        //     },
+        //   });
+        // });
       }
     }
 

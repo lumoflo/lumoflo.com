@@ -34,7 +34,8 @@ model Stores {
   username        String   @unique
   posts           Posts[]
   orders          Orders[]
-  subdomain       String
+  subdomain       String?  @unique
+  customDomain    String?  @unique
 
   @@index([id])
 }

@@ -9,7 +9,8 @@ export const StoresModel = z.object({
   user_id: z.string().nullish(),
   instagram_token: z.string(),
   username: z.string(),
-  subdomain: z.string(),
+  subdomain: z.string().nullish(),
+  customDomain: z.string().nullish(),
 })
 
 export interface CompleteStores extends z.infer<typeof StoresModel> {

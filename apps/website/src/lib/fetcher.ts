@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache";
-import { db } from "~/lib/prismaClient";
+import { db } from "@gramflow/db";
 
 import {env} from "~/env.mjs";
 
