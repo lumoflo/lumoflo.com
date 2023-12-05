@@ -1,18 +1,11 @@
 import localFont from "next/font/local";
-
-import { TailwindIndicator } from "@gramflow/ui";
-import { cn } from "@gramflow/utils";
-
-import { ThemeProvider } from "~/providers/theme-provider";
+import {cn} from "@gramflow/utils";
 import "~/styles/globals.css";
-import { Metadata } from "next";
-import { ClerkProvider } from "@clerk/nextjs";
-import { Toaster } from "sonner";
+import {Metadata} from "next";
 
-import { fontSans } from "~/lib/fonts";
-import QueryProvider from "~/providers/query-provider";
+import {fontSans} from "~/lib/fonts";
+import {Providers} from "~/providers";
 
-// Font files can be colocated inside of `pages`
 const fontHeading = localFont({
     src: "../assets/fonts/CalSans-SemiBold.woff2",
     variable: "--font-heading",
@@ -24,10 +17,10 @@ export const metadata: Metadata = {
         template: `Lumoflo`,
     },
     description: "",
-    themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "white" },
-        { media: "(prefers-color-scheme: dark)", color: "black" },
-    ],
+    // themeColor: [
+    //     {media: "(prefers-color-scheme: light)", color: "white"},
+    //     {media: "(prefers-color-scheme: dark)", color: "black"},
+    // ],
     openGraph: {
         type: "website",
         locale: "en_US",
@@ -77,28 +70,18 @@ export default async function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <ClerkProvider>
-            <html lang="en" suppressHydrationWarning>
-            <QueryProvider>
-                <head />
-                <body
-                    className={cn(
-                        "min-h-screen bg-background font-sans antialiased",
-                        fontSans.variable,
-                        fontHeading.variable,
-                    )}
-                >
-                <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-                    <Toaster theme="dark" />
-                    <div className={`relative flex min-h-screen flex-col`}>
-                        {children}
-                    </div>
-                </ThemeProvider>
-
-                <TailwindIndicator />
-                </body>
-            </QueryProvider>
-            </html>
-        </ClerkProvider>
+        <html lang="en" suppressHydrationWarning>
+        <body
+            className={cn(
+                "min-h-screen bg-background font-sans antialiased",
+                fontSans.variable,
+                fontHeading.variable,
+            )}
+        >
+        <Providers>
+            {children}
+        </Providers>
+        </body>
+        </html>
     );
 }
