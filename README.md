@@ -98,7 +98,7 @@ We use the following tech stack:
 - Shadcn UI  
 - Doppler (Environment Variables and Secret Management)  
 - Resend (Emails)  
-- Clerk.dev (Authentication for Admin Panel)  
+- Next Auth (Authentication for Admin Panel)  
 - Tremor (Dashboard's Visual Analytics)  
 - AWS S3 SDK  
 - Upstash Redis (Syncing Instagram Posts)  
@@ -122,7 +122,7 @@ b. You should have a domain purchased and setup with Cloudflare (as we use Clouf
 3. Rename the example.config.ts file to config.ts and fill in the details.  
 4. Rename the example.env file to .env and fill in the details. We recommend setting up Doppler since it makes it easier  
 to manage environment variables across multiple environments.  
-5. Sign up on all the websites that the ENV file mentions like Doppler, Clerk.dev, Vercel, Trigger.dev etc. and fill in  
+5. Sign up on all the websites that the ENV file mentions like Doppler, Next Auth, Vercel, Trigger.dev etc. and fill in  
 the details.  
 6. Setup Trigger.dev and ensure that the endpoint is valid and is specified in the package.json of the _admin_ app.  
 7. Finally run the project with `pnpm dev` and verify that everything is working.  

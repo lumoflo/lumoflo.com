@@ -18,6 +18,9 @@ const config = {
     "@gramflow/db",
     "@gramflow/utils",
     "@gramflow/ui",
+    "@gramflow/kv",
+    "@gramflow/r2",
+    "@gramflow/auth",
   ],
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },

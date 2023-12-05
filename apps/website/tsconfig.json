@@ -20,6 +20,6 @@
     "**/*.cjs",
     "**/*.mjs",
     ".next/types/**/*.ts",
-    "src/app/app/api/instagram/route.ts"
+    "src/app/api/instagram/route.ts"
   ]
 }
