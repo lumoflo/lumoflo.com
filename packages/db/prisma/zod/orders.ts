@@ -26,7 +26,7 @@ export interface CompleteOrders extends z.infer<typeof OrdersModel> {
   store?: CompleteStores | null
   posts: CompleteSlides[]
   customer?: CompleteCustomers | null
-  ptp: CompleteOtp[]
+  otp: CompleteOtp[]
   pickup: CompletePickups
 }
 
@@ -39,6 +39,6 @@ export const RelatedOrdersModel: z.ZodSchema<CompleteOrders> = z.lazy(() => Orde
   store: RelatedStoresModel.nullish(),
   posts: RelatedSlidesModel.array(),
   customer: RelatedCustomersModel.nullish(),
-  ptp: RelatedOtpModel.array(),
+  otp: RelatedOtpModel.array(),
   pickup: RelatedPickupsModel,
 }))

@@ -1,5 +1,5 @@
 import * as z from "zod"
-import { CompleteUsers, RelatedUsersModel, CompletePosts, RelatedPostsModel, CompleteOrders, RelatedOrdersModel } from "./index"
+import { CompleteUser, RelatedUserModel, CompletePosts, RelatedPostsModel, CompleteOrders, RelatedOrdersModel } from "./index"
 
 export const StoresModel = z.object({
   id: z.string().uuid(),
@@ -14,7 +14,7 @@ export const StoresModel = z.object({
 })
 
 export interface CompleteStores extends z.infer<typeof StoresModel> {
-  user?: CompleteUsers | null
+  user?: CompleteUser | null
   posts: CompletePosts[]
   orders: CompleteOrders[]
 }
@@ -25,7 +25,7 @@ export interface CompleteStores extends z.infer<typeof StoresModel> {
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
 export const RelatedStoresModel: z.ZodSchema<CompleteStores> = z.lazy(() => StoresModel.extend({
-  user: RelatedUsersModel.nullish(),
+  user: RelatedUserModel.nullish(),
   posts: RelatedPostsModel.array(),
   orders: RelatedOrdersModel.array(),
 }))
