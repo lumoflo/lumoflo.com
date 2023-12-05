@@ -4,7 +4,7 @@ import { LogSnag } from "logsnag";
 import { Webhook } from "svix";
 
 import { env } from "~/env.mjs";
-import { db } from "@gramflow/db";
+import { db } from "@lumoflo/db";
 
 const logsnag = new LogSnag({
   token: env.LOG_SNAG_API_TOKEN,

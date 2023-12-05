@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache";
-import { db } from "@gramflow/db";
+import { db } from "@lumoflo/db";
 
 import {env} from "~/env.mjs";
 

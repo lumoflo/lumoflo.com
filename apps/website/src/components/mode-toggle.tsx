@@ -9,7 +9,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@gramflow/ui";
+} from "@lumoflo/ui";
 
 import { Icons } from "~/components/icons";
 

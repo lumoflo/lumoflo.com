@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
-import { cn } from "@gramflow/utils";
+import { cn } from "@lumoflo/utils";
 
 import { buttonVariants } from "./button";
 

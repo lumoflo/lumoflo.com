@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 import { withUt } from "uploadthing/tw";
 
-import baseConfig from "@gramflow/tailwind-config";
+import baseConfig from "@lumoflo/tailwind-config";
 
 export default withUt({
   content: [

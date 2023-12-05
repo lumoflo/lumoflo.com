@@ -13,7 +13,7 @@ import {
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "@gramflow/ui"
+} from "@lumoflo/ui"
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
     user: Pick<User, "name" | "image" | "email">

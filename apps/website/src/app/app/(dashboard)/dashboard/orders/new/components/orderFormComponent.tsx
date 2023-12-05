@@ -8,8 +8,8 @@ import {useFieldArray, useForm} from "react-hook-form";
 import {toast} from "sonner";
 import * as z from "zod";
 
-import {SlidesModel} from "@gramflow/db/prisma/zod";
-import {Button, Input, Loader} from "@gramflow/ui";
+import {SlidesModel} from "@lumoflo/db/prisma/zod";
+import {Button, Input, Loader} from "@lumoflo/ui";
 
 import {Icons} from "~/components/icons";
 import {zodResolver} from "@hookform/resolvers/zod";

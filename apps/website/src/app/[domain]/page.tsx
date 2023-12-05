@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {db} from "@gramflow/db";
+import {db} from "@lumoflo/db";
 import {notFound} from "next/navigation";
 import Image from "next/image";
 import {getSiteData} from "~/lib/fetcher";

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation"
 
 import { SidebarNavItem } from "~/types"
 import { Icons } from "~/components/icons"
-import { cn } from "@gramflow/utils"
+import { cn } from "@lumoflo/utils"
 
 interface DashboardNavProps {
   items: SidebarNavItem[]

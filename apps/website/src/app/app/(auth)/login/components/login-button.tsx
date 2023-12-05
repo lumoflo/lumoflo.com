@@ -4,7 +4,7 @@ import {signIn} from "next-auth/react";
 import {useSearchParams} from "next/navigation";
 import {useEffect, useState} from "react";
 import {toast} from "sonner";
-import {Loader} from "@gramflow/ui";
+import {Loader} from "@lumoflo/ui";
 
 export default function LoginButton() {
     const [loading, setLoading] = useState(false);

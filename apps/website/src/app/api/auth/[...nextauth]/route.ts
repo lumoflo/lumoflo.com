@@ -1,4 +1,4 @@
-import {authOptions} from "@gramflow/auth";
+import {authOptions} from "@lumoflo/auth";
 import NextAuth from "next-auth";
 
 const handler = NextAuth(authOptions);

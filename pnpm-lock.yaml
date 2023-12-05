@@ -4,12 +4,12 @@ importers:
 
   .:
     dependencies:
-      '@gramflow/eslint-config':
-        specifier: workspace:*
-        version: link:packages/config/eslint
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^3.7.2
         version: 3.7.2(prettier@2.8.8)
+      '@lumoflo/eslint-config':
+        specifier: workspace:*
+        version: link:packages/config/eslint
       '@manypkg/cli':
         specifier: ^0.20.0
         version: 0.20.0
@@ -37,33 +37,6 @@ importers:
 
   apps/website:
     dependencies:
-      '@gramflow/auth':
-        specifier: workspace:*
-        version: link:../../packages/auth
-      '@gramflow/db':
-        specifier: workspace:*
-        version: link:../../packages/db
-      '@gramflow/email':
-        specifier: workspace:*
-        version: link:../../packages/email
-      '@gramflow/instagram':
-        specifier: workspace:^
-        version: link:../../packages/instagram
-      '@gramflow/kv':
-        specifier: workspace:^
-        version: link:../../packages/kv
-      '@gramflow/r2':
-        specifier: workspace:^
-        version: link:../../packages/r2
-      '@gramflow/tailwind-config':
-        specifier: workspace:*
-        version: link:../../packages/config/tailwind
-      '@gramflow/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      '@gramflow/utils':
-        specifier: workspace:*
-        version: link:../../packages/utils
       '@headlessui/tailwindcss':
         specifier: ^0.2.0
         version: 0.2.0(tailwindcss@3.3.2)
@@ -76,6 +49,33 @@ importers:
       '@jsx-email/render':
         specifier: ^1.1.1
         version: 1.1.1
+      '@lumoflo/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@lumoflo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@lumoflo/email':
+        specifier: workspace:*
+        version: link:../../packages/email
+      '@lumoflo/instagram':
+        specifier: workspace:^
+        version: link:../../packages/instagram
+      '@lumoflo/kv':
+        specifier: workspace:^
+        version: link:../../packages/kv
+      '@lumoflo/r2':
+        specifier: workspace:^
+        version: link:../../packages/r2
+      '@lumoflo/tailwind-config':
+        specifier: workspace:*
+        version: link:../../packages/config/tailwind
+      '@lumoflo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@lumoflo/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@supabase/auth-helpers-nextjs':
         specifier: ^0.7.4
         version: 0.7.4(@supabase/supabase-js@2.33.1)
@@ -221,7 +221,7 @@ importers:
         specifier: ^0.5.4
         version: 0.5.4(prisma@3.15.2)(zod@3.22.3)
     devDependencies:
-      '@gramflow/eslint-config':
+      '@lumoflo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/config/eslint
       '@prisma/nextjs-monorepo-workaround-plugin':
@@ -272,7 +272,7 @@ importers:
 
   packages/auth:
     dependencies:
-      '@gramflow/db':
+      '@lumoflo/db':
         specifier: workspace:*
         version: link:../db
       '@next-auth/prisma-adapter':
@@ -297,7 +297,7 @@ importers:
         specifier: ^3.21.4
         version: 3.21.4
     devDependencies:
-      '@gramflow/eslint-config':
+      '@lumoflo/eslint-config':
         specifier: workspace:*
         version: link:../config/eslint
       eslint:
@@ -359,13 +359,13 @@ importers:
 
   packages/db:
     dependencies:
-      '@gramflow/tailwind-config':
+      '@lumoflo/tailwind-config':
         specifier: workspace:*
         version: link:../config/tailwind
-      '@gramflow/ui':
+      '@lumoflo/ui':
         specifier: workspace:*
         version: link:../ui
-      '@gramflow/utils':
+      '@lumoflo/utils':
         specifier: workspace:*
         version: link:../utils
       '@mermaid-js/mermaid-cli':
@@ -402,15 +402,15 @@ importers:
 
   packages/email:
     dependencies:
-      '@gramflow/db':
-        specifier: workspace:^
-        version: link:../db
-      '@gramflow/utils':
-        specifier: workspace:^
-        version: link:../utils
       '@jsx-email/all':
         specifier: ^2.2.1
         version: 2.2.1(react@18.2.0)
+      '@lumoflo/db':
+        specifier: workspace:^
+        version: link:../db
+      '@lumoflo/utils':
+        specifier: workspace:^
+        version: link:../utils
       '@react-email/components':
         specifier: ^0.0.11
         version: 0.0.11(react@18.2.0)
@@ -429,7 +429,7 @@ importers:
 
   packages/instagram:
     dependencies:
-      '@gramflow/utils':
+      '@lumoflo/utils':
         specifier: workspace:*
         version: link:../utils
       '@t3-oss/env-core':
@@ -454,7 +454,7 @@ importers:
 
   packages/kv:
     dependencies:
-      '@gramflow/utils':
+      '@lumoflo/utils':
         specifier: workspace:*
         version: link:../utils
       '@upstash/redis':
@@ -482,7 +482,7 @@ importers:
       '@aws-sdk/s3-request-presigner':
         specifier: ^3.400.0
         version: 3.400.0
-      '@gramflow/utils':
+      '@lumoflo/utils':
         specifier: workspace:*
         version: link:../utils
       aws-sdk:
@@ -504,7 +504,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@gramflow/utils':
+      '@lumoflo/utils':
         specifier: workspace:*
         version: link:../utils
       '@radix-ui/react-accessible-icon':
@@ -622,7 +622,7 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5(tailwindcss@3.3.2)
     devDependencies:
-      '@gramflow/eslint-config':
+      '@lumoflo/eslint-config':
         specifier: workspace:*
         version: link:../config/eslint
       '@types/node':
@@ -671,7 +671,7 @@ importers:
         specifier: ^1.12.0
         version: 1.12.0
     devDependencies:
-      '@gramflow/eslint-config':
+      '@lumoflo/eslint-config':
         specifier: workspace:*
         version: link:../config/eslint
       '@types/mailgun-js':
