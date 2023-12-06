@@ -373,7 +373,7 @@ importers:
         version: 10.6.1(typescript@5.1.6)
       '@prisma/client':
         specifier: ^5.6.0
-        version: 5.6.0(prisma@4.13.0)
+        version: 5.6.0(prisma@5.6.0)
       prisma-erd-generator:
         specifier: ^1.11.1
         version: 1.11.1(@prisma/client@5.6.0)(typescript@5.1.6)
@@ -391,14 +391,14 @@ importers:
         specifier: ^7.2.1
         version: 7.2.1
       prisma:
-        specifier: ^4.13.0
-        version: 4.13.0
+        specifier: ^5.6.0
+        version: 5.6.0
       typescript:
         specifier: ^5.0.4
         version: 5.1.6
       zod-prisma:
         specifier: ^0.5.4
-        version: 0.5.4(prisma@4.13.0)(zod@3.21.4)
+        version: 0.5.4(prisma@5.6.0)(zod@3.21.4)
 
   packages/email:
     dependencies:
@@ -2720,7 +2720,7 @@ packages:
       '@prisma/client': '>=2.26.0 || >=3'
       next-auth: ^4
     dependencies:
-      '@prisma/client': 5.6.0(prisma@4.13.0)
+      '@prisma/client': 5.6.0(prisma@5.6.0)
       next-auth: 4.23.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
@@ -3081,7 +3081,7 @@ packages:
       '@prisma/engines-version': 4.13.0-50.1e7af066ee9cb95cf3a403c78d9aab3e6b04f37a
     dev: false
 
-  /@prisma/client@5.6.0(prisma@4.13.0):
+  /@prisma/client@5.6.0(prisma@5.6.0):
     resolution: {integrity: sha512-mUDefQFa1wWqk4+JhKPYq8BdVoFk9NFMBXUI8jAkBfQTtgx8WPx02U2HB/XbAz3GSUJpeJOKJQtNvaAIDs6sug==}
     engines: {node: '>=16.13'}
     requiresBuild: true
@@ -3092,7 +3092,7 @@ packages:
         optional: true
     dependencies:
       '@prisma/engines-version': 5.6.0-32.e95e739751f42d8ca026f6b910f5a2dc5adeaeee
-      prisma: 4.13.0
+      prisma: 5.6.0
     dev: false
 
   /@prisma/debug@3.8.1:
@@ -3125,8 +3125,8 @@ packages:
     requiresBuild: true
     dev: false
 
-  /@prisma/engines@4.13.0:
-    resolution: {integrity: sha512-HrniowHRZXHuGT9XRgoXEaP2gJLXM5RMoItaY2PkjvuZ+iHc0Zjbm/302MB8YsPdWozAPHHn+jpFEcEn71OgPw==}
+  /@prisma/engines@5.6.0:
+    resolution: {integrity: sha512-Mt2q+GNJpU2vFn6kif24oRSBQv1KOkYaterQsi0k2/lA+dLvhRX6Lm26gon6PYHwUM8/h8KRgXIUMU0PCLB6bw==}
     requiresBuild: true
 
   /@prisma/generator-helper@3.8.1:
@@ -11778,7 +11778,7 @@ packages:
       '@prisma/client': ^4.0.0 || ^5.0.0
     dependencies:
       '@mermaid-js/mermaid-cli': 10.6.1(typescript@5.1.6)
-      '@prisma/client': 5.6.0(prisma@4.13.0)
+      '@prisma/client': 5.6.0(prisma@5.6.0)
       '@prisma/generator-helper': 5.6.0
       dotenv: 16.3.1
     transitivePeerDependencies:
@@ -11798,13 +11798,13 @@ packages:
       '@prisma/engines': 3.15.1-1.461d6a05159055555eb7dfb337c9fb271cbd4d7e
     dev: false
 
-  /prisma@4.13.0:
-    resolution: {integrity: sha512-L9mqjnSmvWIRCYJ9mQkwCtj4+JDYYTdhoyo8hlsHNDXaZLh/b4hR0IoKIBbTKxZuyHQzLopb/+0Rvb69uGV7uA==}
-    engines: {node: '>=14.17'}
+  /prisma@5.6.0:
+    resolution: {integrity: sha512-EEaccku4ZGshdr2cthYHhf7iyvCcXqwJDvnoQRAJg5ge2Tzpv0e2BaMCp+CbbDUwoVTzwgOap9Zp+d4jFa2O9A==}
+    engines: {node: '>=16.13'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.13.0
+      '@prisma/engines': 5.6.0
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
@@ -14331,7 +14331,7 @@ packages:
       zod: 3.22.3
     dev: false
 
-  /zod-prisma@0.5.4(prisma@4.13.0)(zod@3.21.4):
+  /zod-prisma@0.5.4(prisma@5.6.0)(zod@3.21.4):
     resolution: {integrity: sha512-5Ca4Qd1a1jy1T/NqCEpbr0c+EsbjJfJ/7euEHob3zDvtUK2rTuD1Rc/vfzH8q8PtaR2TZbysD88NHmrLwpv3Xg==}
     engines: {node: '>=14'}
     hasBin: true
@@ -14345,7 +14345,7 @@ packages:
     dependencies:
       '@prisma/generator-helper': 3.8.1
       parenthesis: 3.1.8
-      prisma: 4.13.0
+      prisma: 5.6.0
       ts-morph: 13.0.3
       zod: 3.21.4
     dev: true
