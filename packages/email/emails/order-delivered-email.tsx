@@ -17,8 +17,8 @@ import {
   Text,
 } from "@react-email/components";
 
-import { CompleteOrders } from "@gramflow/db/prisma/zod";
-import { AppConfig } from "@gramflow/utils";
+import { CompleteOrders } from "@lumoflo/db/prisma/zod";
+import { AppConfig } from "@lumoflo/utils";
 
 import { COURIER } from "@prisma/client";
 

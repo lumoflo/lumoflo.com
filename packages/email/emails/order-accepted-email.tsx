@@ -18,7 +18,7 @@ import {
 } from "@react-email/components";
 
 
-import { AppConfig } from "@gramflow/utils";
+import { AppConfig } from "@lumoflo/utils";
 
 const defaultOrder = {
   id: "7bd099e6-b463-4698-bed8-56d345sds2e2",

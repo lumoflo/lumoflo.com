@@ -23,12 +23,12 @@ const config = {
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: [
-    "@gramflow/db",
-    "@gramflow/utils",
-    "@gramflow/ui",
-    "@gramflow/kv",
-    "@gramflow/r2",
-    "@gramflow/auth",
+    "@lumoflo/db",
+    "@lumoflo/utils",
+    "@lumoflo/ui",
+    "@lumoflo/kv",
+    "@lumoflo/r2",
+    "@lumoflo/auth",
   ],
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },

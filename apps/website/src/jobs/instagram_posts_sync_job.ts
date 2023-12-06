@@ -1,11 +1,11 @@
 import { intervalTrigger } from "@trigger.dev/sdk";
 import { z } from "zod";
 
-import { InstagramMediaCount } from "@gramflow/instagram";
-import { KvMediaCountFetcher } from "@gramflow/kv";
+import { InstagramMediaCount } from "@lumoflo/instagram";
+import { KvMediaCountFetcher } from "@lumoflo/kv";
 
 import { env } from "~/env.mjs";
-import { db } from "@gramflow/db";
+import { db } from "@lumoflo/db";
 import { client } from "~/trigger";
 
 const instagramResponseSchema = z.object({

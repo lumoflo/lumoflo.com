@@ -1,4 +1,4 @@
-import { cn } from "@gramflow/utils"
+import { cn } from "@lumoflo/utils"
 import * as React from "react"
 
 

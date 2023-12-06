@@ -1,5 +1,5 @@
 import {NextResponse} from "next/server";
-import {db} from "@gramflow/db";
+import {db} from "@lumoflo/db";
 
 const apiBaseUrl = "https://graph.instagram.com/v17.0/";
 

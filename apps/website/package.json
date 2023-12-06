@@ -1,5 +1,5 @@
 {
-  "name": "@gramflow/admin",
+  "name": "@lumoflo/website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,15 +16,15 @@
     "supabase-gen": "doppler run -- pnpm dlx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID --schema public > types/supabase.ts"
   },
   "dependencies": {
-    "@gramflow/db": "workspace:*",
-    "@gramflow/email": "workspace:*",
-    "@gramflow/auth": "workspace:*",
-    "@gramflow/instagram": "workspace:^",
-    "@gramflow/kv": "workspace:^",
-    "@gramflow/r2": "workspace:^",
-    "@gramflow/tailwind-config": "workspace:*",
-    "@gramflow/ui": "workspace:*",
-    "@gramflow/utils": "workspace:*",
+    "@lumoflo/db": "workspace:*",
+    "@lumoflo/email": "workspace:*",
+    "@lumoflo/auth": "workspace:*",
+    "@lumoflo/instagram": "workspace:^",
+    "@lumoflo/kv": "workspace:^",
+    "@lumoflo/r2": "workspace:^",
+    "@lumoflo/tailwind-config": "workspace:*",
+    "@lumoflo/ui": "workspace:*",
+    "@lumoflo/utils": "workspace:*",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "1.0.6",
     "@hookform/resolvers": "^3.2.0",
@@ -79,7 +79,7 @@
     "zod-prisma": "^0.5.4"
   },
   "devDependencies": {
-    "@gramflow/eslint-config": "workspace:*",
+    "@lumoflo/eslint-config": "workspace:*",
     "@prisma/nextjs-monorepo-workaround-plugin": "^5.4.2",
     "@types/jest": "^29.5.4",
     "@types/node": "^18.16.5",

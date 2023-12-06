@@ -1,4 +1,4 @@
-import { Loader } from "@gramflow/ui";
+import { Loader } from "@lumoflo/ui";
 
 import { DashboardHeader } from "~/components/header";
 import { DashboardShell } from "~/components/shell";

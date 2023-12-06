@@ -1,9 +1,8 @@
 import Link from "next/link";
-import {Button, Loader,} from "@gramflow/ui";
+import {Button, Loader,} from "@lumoflo/ui";
 
 import {DashboardHeader} from "~/components/header";
 import {DashboardShell} from "~/components/shell";
-import {db} from "@gramflow/db";
 
 
 export default function Page() {

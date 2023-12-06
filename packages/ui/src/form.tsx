@@ -12,7 +12,7 @@ import {
   useFormContext,
 } from "react-hook-form"
 
-import { cn } from "@gramflow/utils";
+import { cn } from "@lumoflo/utils";
 import {cva, VariantProps} from "class-variance-authority";
 
 

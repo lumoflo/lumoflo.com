@@ -1,6 +1,6 @@
 import {getServerSession, type NextAuthOptions} from "next-auth";
 import {PrismaAdapter} from "@next-auth/prisma-adapter";
-import {db} from "@gramflow/db";
+import {db} from "@lumoflo/db";
 import {env} from "./../env.mjs"
 import GitHubProvider from "next-auth/providers/github";
 

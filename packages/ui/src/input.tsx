@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "@gramflow/utils";
+import { cn } from "@lumoflo/utils";
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
 

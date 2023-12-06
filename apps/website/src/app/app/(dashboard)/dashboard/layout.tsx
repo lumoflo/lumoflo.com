@@ -2,7 +2,7 @@ import {MainNav} from "~/components/main-nav";
 import {DashboardNav} from "~/components/nav";
 import {SiteFooter} from "~/components/site-footer";
 import {dashboardConfig} from "~/config/dashboard";
-import {getCurrentUser} from "@gramflow/auth";
+import {getCurrentUser} from "@lumoflo/auth";
 import {notFound} from "next/navigation";
 import {UserAccountNav} from "~/components/user-nav-dropdown";
 

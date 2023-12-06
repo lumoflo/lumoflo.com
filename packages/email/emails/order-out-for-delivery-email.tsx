@@ -18,8 +18,7 @@ import {
   Text,
 } from "@react-email/components";
 
-import { CompleteOrders } from "@gramflow/db/prisma/zod";
-import { AppConfig } from "@gramflow/utils";
+import { AppConfig } from "@lumoflo/utils";
 
 export const OrderOutForDeliveryEmail = ({
   id,

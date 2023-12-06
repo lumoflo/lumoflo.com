@@ -1,15 +1,15 @@
 import { PrismaClient, Status } from "@prisma/client";
 import { z } from "zod";
 
-import { AppConfig } from "@gramflow/utils";
+import { AppConfig } from "@lumoflo/utils";
 import {
   OrderShippingUpdateSchema,
   UpdateOrderWeightAndSizePutSchema,
   type AddOrderPostSchema,
   type UserSchema,
-} from "@gramflow/utils/src/schema";
+} from "@lumoflo/utils/src/schema";
 
-import {ShippingCostResponseSchema} from "@gramflow/utils/src/schema";
+import {ShippingCostResponseSchema} from "@lumoflo/utils/src/schema";
 import { env } from "~/env.mjs";
 import { fetchImageUrls } from "./instagramHelper";
 

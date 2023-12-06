@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import {cn} from "@gramflow/utils";
+import {cn} from "@lumoflo/utils";
 import "~/styles/globals.css";
 import {Metadata} from "next";
 

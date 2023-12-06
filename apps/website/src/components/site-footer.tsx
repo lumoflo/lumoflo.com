@@ -4,7 +4,7 @@ import { siteConfig } from "~/config/site"
 
 import { Icons } from "~/components/icons"
 import { ThemeToggle } from "~/components/mode-toggle"
-import { cn } from "@gramflow/utils"
+import { cn } from "@lumoflo/utils"
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (

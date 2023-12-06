@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import { db } from "@gramflow/db";
+import { db } from "@lumoflo/db";
 
 export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url);

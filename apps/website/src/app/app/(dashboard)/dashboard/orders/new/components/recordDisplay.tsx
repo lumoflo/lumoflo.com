@@ -1,4 +1,4 @@
-import { Card, Label } from "@gramflow/ui";
+import { Card, Label } from "@lumoflo/ui";
 
 export const RecordDisplay = ({
   label,
