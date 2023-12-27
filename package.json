@@ -14,6 +14,7 @@
     "db:migrate": "doppler run -- turbo db:migrate",
     "db:migrate-prod": "turbo db:migrate-prod",
     "db:push": "turbo db:push db:generate",
+    "db:seed": "turbo db:seed",
     "dev": "doppler run --  turbo dev --parallel",
     "dev-web": "turbo dev --filter web",
     "dev-admin": "turbo dev --filter admin",

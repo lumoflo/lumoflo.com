@@ -6,6 +6,7 @@ export const SlidesModel = z.object({
   post_link: z.string(),
   slide_image_url: z.string(),
   post_caption: z.string(),
+  index: z.number().int(),
   order_id: z.string().nullish(),
   post_id: z.string(),
   post_timestamp: z.date(),

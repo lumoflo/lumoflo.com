@@ -3,7 +3,8 @@ import { Loader } from "@lumoflo/ui";
 import { DashboardHeader } from "~/components/header";
 import { DashboardShell } from "~/components/shell";
 
-export default function DashboardBillingLoading() {
+export default async function DashboardBillingLoading() {
+
   return (
     <DashboardShell>
       <DashboardHeader
@@ -11,7 +12,8 @@ export default function DashboardBillingLoading() {
         text="Create a new order for a customer."
       />
       <div className="grid gap-10">
-        <Loader />
+        {/* <Loader /> */}
+       
       </div>
     </DashboardShell>
   );
