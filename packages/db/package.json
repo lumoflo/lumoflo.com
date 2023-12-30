@@ -10,8 +10,7 @@
     "db:migrate-prod": "pnpm with-env prisma migrate deploy",
     "db:migrate": "doppler run -- prisma migrate dev",
     "db:push": "doppler run -- prisma db push",
-    "with-env": "dotenv -e ../../.env --",
-    "db:seed": "doppler run -- bun ./seed-scripts/seed.ts"
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@lumoflo/tailwind-config": "workspace:*",
@@ -21,8 +20,6 @@
     "@prisma/client": "^5.6.0",
     "prisma-erd-generator": "^1.11.1",
     "supabase": "^1.88.0",
-    "ts-node": "^10.9.2",
-    "uuidv4": "^6.2.13",
     "zod": "^3.21.4"
   },
   "devDependencies": {

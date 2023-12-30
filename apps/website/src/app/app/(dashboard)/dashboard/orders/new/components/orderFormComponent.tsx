@@ -2,17 +2,32 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { Loader2, RefreshCcw } from "lucide-react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import useSWR, { Fetcher, useSWRConfig } from "swr";
+import useSWRMutation from "swr/mutation";
 import * as z from "zod";
 
 import { SlidesModel } from "@lumoflo/db/prisma/zod";
 import { Button, Input, Loader } from "@lumoflo/ui";
 
 import { Icons } from "~/components/icons";
+import { Slide } from "../../../../../../../../../backend/src/slides/entities/slide.entity";
+
+type ModifiedFormDataType = {
+  selectedSlideIds: (string | undefined)[] | undefined;
+  link: string;
+  price: string;
+}[];
+
+type OrderPostDataType = {
+  slides: string[];
+  prices: string[];
+};
 
 type Product = {
   link: string;
@@ -43,6 +58,7 @@ interface PostsData {
   slideIds: string[];
   selectedSlides: number[];
   active: boolean;
+  ready: boolean;
   url: string;
 }
 
@@ -82,32 +98,75 @@ export default function OrderForm() {
   const [postsData, setPostsData] = useState<PostsData[]>([]);
   const [activePostLinkIndex, setActivePostLinkIndex] = useState<number>(0);
 
-  const {
-    refetch: refetchSlides,
-    isFetching: areSlidesLoading,
-    isRefetching: areSlidesRefetching,
-    //@ts-ignore
-  } = useQuery<z.infer<typeof SlidesModel>[]>(
-    ["slidesFetch", postsData[activePostLinkIndex]?.url],
-    async () => {
-      const response = await fetch(
-        `/api/slides?post_link=${postsData[activePostLinkIndex]?.url}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
+  const baseUrl = "http://localhost:3002";
+
+  const { getToken, userId } = useAuth();
+
+  const slideFetcher: Fetcher<Slide[], string> = async () => {
+    toast.info("Fetching slides");
+
+    return fetch(
+      `${baseUrl}/posts/${postsData[activePostLinkIndex]?.url}/slides`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${await getToken()}`,
         },
-      );
-      console.log({ response });
-      if (!response.ok) {
-        throw new Error("Something went wrong while fetching prices");
-      }
-      return await response.json();
-    },
+      },
+    ).then((res) => res.json());
+  };
+
+  const orderMutator = async (
+    url: string,
+    { arg: data }: { arg: OrderPostDataType },
+  ) => {
+    console.log({ data });
+    return fetch(`${baseUrl}/orders`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${await getToken()}`,
+      },
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
+  };
+
+  const {
+    data,
+    trigger: createOrder,
+    isMutating: isCreatingOrder,
+  } = useSWRMutation("/orders", orderMutator);
+
+  const { data: slides } = useSWR(
+    postsData[activePostLinkIndex]?.ready
+      ? ["slide", postsData[activePostLinkIndex]?.url]
+      : null,
+    ([url]) => slideFetcher(url),
     {
-      enabled: false,
+      onError: (error) => {
+        toast.error(`Error occurred during the fetching of slides. ${error}`);
+        setPostsData((prevData) => {
+          const updatedData = [...prevData];
+          //@ts-ignore
+          updatedData[activePostLinkIndex] = {
+            ...updatedData[activePostLinkIndex],
+            loading: false,
+          };
+          return updatedData;
+        });
+      },
       onSuccess: (data) => {
+        //set the loading state on the form for the currentIndex to false
+        setPostsData((prevData) => {
+          const updatedData = [...prevData];
+          //@ts-ignore
+          updatedData[activePostLinkIndex] = {
+            ...updatedData[activePostLinkIndex],
+            loading: false,
+          };
+          return updatedData;
+        });
+
         console.log({ activePostLinkIndex, postsData });
         const slideLinks: string[] = [];
         data.forEach((slide) => {
@@ -125,12 +184,12 @@ export default function OrderForm() {
         });
         console.log({ data });
       },
-      onError: (error) => {
-        console.log({ error });
-        toast.error("Failed to fetch slides");
-      },
     },
   );
+
+  useEffect(() => {
+    console.log({ slides });
+  }, [slides]);
 
   const [packageSize, setPackageSize] = useState("MEDIUM");
   const router = useRouter();
@@ -149,60 +208,56 @@ export default function OrderForm() {
   const { formState } = form;
 
   const { errors } = formState;
-  const {
-    mutate: createOrderMutate,
-    isLoading: createOrderLoading,
-    error: createOrderError,
-  } = useMutation(
-    async ({}: {}) => {
-      // Transform the orders array into the format expected by your API
+  // const {
+  //   mutate: createOrderMutate,
+  //   isLoading: createOrderLoading,
+  //   error: createOrderError,
+  // } = useMutation(
+  //   async ({}: {}) => {
+  //     // Transform the orders array into the format expected by your API
 
-      const requestBody = {
-        //@ts-ignore
-        instagram_post_urls: orders,
-        images: [],
-        //@ts-ignore
-        size: AppConfig.DefaultPackageDetails[packageSize],
-      };
+  //     const requestBody = {
+  //       //@ts-ignore
+  //       instagram_post_urls: orders,
+  //       images: [],
+  //       //@ts-ignore
+  //       size: AppConfig.DefaultPackageDetails[packageSize],
+  //     };
 
-      const req = await fetch("/api/order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      });
-      if (req.ok) return req.text();
-      else
-        throw `Request Failed ${req.statusText} ${
-          req.status
-        } ${await req.text()}`;
-    },
+  //     const req = await fetch("/api/order", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(requestBody),
+  //     });
+  //     if (req.ok) return req.text();
+  //     else
+  //       throw `Request Failed ${req.statusText} ${
+  //         req.status
+  //       } ${await req.text()}`;
+  //   },
 
-    {
-      onSuccess: async (data) => {
-        form.reset();
-        console.log({ data });
-        try {
-          await navigator.clipboard.writeText(data);
-        } catch (e) {
-          console.log({ e });
-        }
-        toast.success("Order has been created! Link has been copied.");
-        setGeneratedOrderId(data);
-      },
-      onError: async (error) => {
-        toast.error(
-          `Error occurred during the creating of the order. ${error}`,
-        );
-        console.log(error);
-      },
-    },
-  );
-
-  useEffect(() => {
-    console.log({ postsData });
-  }, [postsData]);
+  //   {
+  //     onSuccess: async (data) => {
+  //       form.reset();
+  //       console.log({ data });
+  //       try {
+  //         await navigator.clipboard.writeText(data);
+  //       } catch (e) {
+  //         console.log({ e });
+  //       }
+  //       toast.success("Order has been created! Link has been copied.");
+  //       setGeneratedOrderId(data);
+  //     },
+  //     onError: async (error) => {
+  //       toast.error(
+  //         `Error occurred during the creating of the order. ${error}`,
+  //       );
+  //       console.log(error);
+  //     },
+  //   },
+  // );
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
@@ -211,12 +266,11 @@ export default function OrderForm() {
   const [generatedOrderId, setGeneratedOrderId] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log({ postsData });
+    console.log({ activePostLinkIndex });
+  }, [postsData]);
+  useEffect(() => {
     const subscription = form.watch((value, { name, type }) => {
-      console.log({
-        value,
-        name,
-        type,
-      });
       if (type === "change") {
         if (name?.includes(".link")) {
           function extractNumberFromLink(link: string): number | null {
@@ -241,15 +295,8 @@ export default function OrderForm() {
             const link = value.product[index]?.link ?? "";
             const regex = /\/p\/([^/?]+)(?:\/\?.*img_index=(\d+))?/;
             const regexResult = regex.exec(link);
-            console.log({
-              link,
-              regexResult,
-            });
             if (regexResult) {
-              const [, postId] = regexResult;
-              console.log({
-                postId,
-              });
+              const [_, postId] = regexResult;
               form.setValue(
                 `product.${index}.link`,
                 `https://www.instagram.com/p/${postId}/`,
@@ -259,11 +306,12 @@ export default function OrderForm() {
                 const updatedData = [...prevData];
                 updatedData[index] = {
                   loading: true,
+                  ready: true,
                   slides: [],
                   slideIds: [],
                   selectedSlides: [],
                   active: true,
-                  url: `https://www.instagram.com/p/${postId}/`,
+                  url: `${postId}`,
                 };
                 return updatedData;
               });
@@ -271,6 +319,8 @@ export default function OrderForm() {
                 "Post link has been set to " +
                   "https://www.instagram.com/p/C0McuL0y4cD/",
               );
+            } else {
+              toast.error("Failed to set post link");
             }
           } else {
             toast.error("Failed to set post link");
@@ -285,19 +335,29 @@ export default function OrderForm() {
     console.log({ values });
     e.preventDefault();
 
-    const dataToSend = values.product.map((product) => {
+    const dataToSend: ModifiedFormDataType = values.product.map((product) => {
       const selectedSlides = postsData.find(
-        (post) => post.url === product.link,
+        //since the url is the postId and the product id is the post link we need to find the post with the url
+        (post) => {
+          console.log({ post: post.url, product: product.link.split("/")[4] });
+          return post.url === product.link.split("/")[4];
+        },
       )?.selectedSlides;
+
       const selectedSlideIds = selectedSlides?.map((slideIndex) => {
-        const data = postsData.find((post) => post.url === product.link);
+        const data = postsData.find(
+          (post) => post.url === product.link.split("/")[4],
+        );
         return data?.slideIds[slideIndex];
       });
+      console.log({ selectedSlides, selectedSlideIds });
       return {
         ...product,
         selectedSlideIds,
       };
     });
+
+    console.log({ dataToSend });
 
     const invalidProductPrice = dataToSend.some((product, index) => {
       return !product.price || product.price === "";
@@ -329,8 +389,21 @@ export default function OrderForm() {
       return;
     }
 
+    //make a single array for prices and slides
+    const prices: string[] = [];
+    const slides: string[] = [];
+    dataToSend.forEach((product) => {
+      product.selectedSlideIds?.map(() => prices.push(product.price));
+      //@ts-ignore
+      slides.push(...product.selectedSlideIds);
+    });
+
     //createOrderMutate(dataToSend);
-    console.log({ dataToSend });
+    // createOrder({
+    //   slides,
+    //   prices,
+    // });
+    console.log({ slides, prices });
     return;
   }
 
@@ -402,12 +475,12 @@ export default function OrderForm() {
           </div>
         </div>
       )}
-      {createOrderLoading && (
+      {isCreatingOrder && (
         <div className="flex items-center">
           <Loader />
         </div>
       )}
-      {!createOrderLoading && !generatedOrderId && (
+      {!isCreatingOrder && !generatedOrderId && (
         // @ts-ignore
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           {fields.map((field, index) => (
@@ -418,7 +491,7 @@ export default function OrderForm() {
                 }`}</p>
                 {/*@ts-ignore*/}
                 <Button
-                  disabled={createOrderLoading}
+                  disabled={isCreatingOrder}
                   variant="ghost"
                   className="-mr-3 text-red-400"
                   type="button"
@@ -440,24 +513,11 @@ export default function OrderForm() {
                 {/*@ts-ignore*/}
                 <Input
                   className="w-1/2 lg:max-w-md"
-                  disabled={createOrderLoading}
+                  disabled={isCreatingOrder}
                   type="text"
                   placeholder={`Post Link`}
                   {...form.register(`product.${index}.link` as const)}
                 />
-                {/*@ts-ignore*/}
-                <Button
-                  type="button"
-                  onClick={async () => {
-                    if (form.getValues(`product.${index}.link` as const)) {
-                      //fetch the slides
-                      await refetchSlides();
-                    }
-                  }}
-                  variant={"outline"}
-                >
-                  Fetch Slides
-                </Button>
               </div>
               {errors.product && errors.product[index]?.link && (
                 <ErrorMessage error={errors.product[index]?.link} />
@@ -525,12 +585,12 @@ export default function OrderForm() {
                   })}
                 </div>
               )}
-              {(areSlidesRefetching || areSlidesLoading) && <Loader />}
+              {postsData[index]?.loading && <Loader />}
 
               {/*@ts-ignore*/}
               <Input
                 className="w-1/2 lg:max-w-md "
-                disabled={createOrderLoading}
+                disabled={isCreatingOrder}
                 type="number"
                 placeholder={`Price`}
                 {...form.register(`product.${index}.price` as const)}
@@ -544,11 +604,14 @@ export default function OrderForm() {
           <div className="flex space-x-4">
             {/*@ts-ignore*/}
             <Button
-              disabled={createOrderLoading}
+              disabled={isCreatingOrder}
               variant="outline"
               type="button"
               onClick={() => {
-                append({ link: "", price: "" });
+                append({
+                  link: "",
+                  price: "",
+                });
                 setActivePostLinkIndex(fields.length);
               }}
             >
@@ -563,8 +626,8 @@ export default function OrderForm() {
           </div>
           {fields.length > 0 && (
             // @ts-ignore
-            <Button disabled={createOrderLoading} type="submit">
-              {createOrderLoading && (
+            <Button disabled={isCreatingOrder} type="submit">
+              {isCreatingOrder && (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
               Generate Order

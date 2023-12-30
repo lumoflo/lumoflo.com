@@ -1,0 +1,18 @@
+{
+  "name": "@lumoflo/api",
+  "version": "0.1.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "@lumoflo/db": "workspace:^",
+    "@lumoflo/utils": "workspace:*",
+    "@ts-rest/core": "^3.30.5",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.5",
+    "typescript": "^5.0.4"
+  }
+}
