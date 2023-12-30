@@ -8,8 +8,6 @@ import {cn} from "@lumoflo/utils";
 
 import {Icons} from "~/components/icons";
 import {MobileNav} from "~/components/mobile-nav";
-import {siteConfig} from "~/config/site";
-import {MainNavItem} from "~/types";
 
 interface MainNavProps {
     items?: MainNavItem[];
