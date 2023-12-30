@@ -4,17 +4,17 @@ import "./src/env.mjs";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import PrismaPlugin from '@prisma/nextjs-monorepo-workaround-plugin'
+// import PrismaPlugin from '@prisma/nextjs-monorepo-workaround-plugin'
 
 /** @type {import("next").NextConfig} */
 const config = {
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.plugins = [...config.plugins, new PrismaPlugin()]
-    }
-
-    return config
-  },
+  // webpack: (config, { isServer }) => {
+  //   if (isServer) {
+  //     config.plugins = [...config.plugins, new PrismaPlugin()]
+  //   }
+  //
+  //   return config
+  // },
   images: {
     remotePatterns: [
     ],
