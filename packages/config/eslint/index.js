@@ -10,6 +10,12 @@ const config = {
   rules: {
     "@next/next/no-html-link-for-pages": "off",
     "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-expect-error": "allow-with-description",
+      },
+    ],
     "@typescript-eslint/no-unused-vars": [
       "error",
       {

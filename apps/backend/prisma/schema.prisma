@@ -15,59 +15,15 @@ datasource db {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  // if you are using Github OAuth, you can get rid of the username attribute (that is for Twitter OAuth)
   username      String?
-  gh_username   String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  accounts      Account[]
-  sessions      Session[]
   stores        Stores[]
 }
 
-model Account {
-  id                       String  @id @default(cuid())
-  userId                   String
-  type                     String
-  provider                 String
-  providerAccountId        String
-  refresh_token            String?
-  refresh_token_expires_in Int?
-  access_token             String?
-  expires_at               Int?
-  token_type               String?
-  scope                    String?
-  id_token                 String?
-  session_state            String?
-  oauth_token_secret       String?
-  oauth_token              String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-  @@index([userId])
-}
-
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-}
-
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
-}
 
 model Stores {
   id              String   @id @default(uuid()) /// @zod.uuid()
@@ -94,7 +50,6 @@ model Posts {
   post_created_at DateTime
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
-  quantity        Int      @default(1)
   store           Stores?  @relation(fields: [store_id], references: [id])
   store_id        String?
 
@@ -107,11 +62,16 @@ model Slides {
   slide_image_url String
   post_caption    String
   index           Int
+  quantity        Int      @default(1)
+  size            Size     @default(SMALL)
+  created_at      DateTime @default(now())
+  price           Float    @default(0.0)
   orders          Orders?  @relation(fields: [order_id], references: [id])
   order_id        String?
   posts           Posts    @relation(fields: [post_id], references: [id])
   post_id         String
   post_timestamp  DateTime
+
   @@unique([post_id, index])
 }
 
@@ -122,7 +82,7 @@ model Orders {
   store         Stores?    @relation(fields: [store_id], references: [id])
   store_id      String?
   prebook       Boolean    @default(false)
-  posts         Slides[]
+  slides        Slides[]
   created_at    DateTime   @default(now())
   updated_at    DateTime   @updatedAt
   customer      Customers? @relation(fields: [customer_id], references: [id])
@@ -136,8 +96,8 @@ model Orders {
   remarks       String?
   courier       COURIER    @default(DEFAULT)
   shipping_cost Float?     @default(0.0)
-  pickup        Pickups    @relation(fields: [pickup_id], references: [id])
-  pickup_id     String
+  pickup        Pickups?   @relation(fields: [pickup_id], references: [id])
+  pickup_id     String?
 
   @@index([customer_id, id])
 }
@@ -209,23 +169,23 @@ enum COURIER {
   OTHER
 }
 
-// generator zod {
-//   provider = "zod-prisma"
-//   output   = "./zod" // (default) the directory where generated zod schemas will be saved
+generator zod {
+  provider = "zod-prisma"
+  output   = "./zod" // (default) the directory where generated zod schemas will be saved
 
-//   relationModel = true // (default) Create and export both plain and related models.
-//   // relationModel         = "default" // Do not export model without relations.
-//   // relationModel         = false // Do not generate related model
+  relationModel = false // (default) Create and export both plain and related models.
+  // relationModel         = "default" // Do not export model without relations.
+  // relationModel         = false // Do not generate related model
 
-//   modelCase = "PascalCase" // (default) Output models using pascal case (ex. UserModel, PostModel)
-//   // modelCase             = "camelCase" // Output models using camel case (ex. userModel, postModel)
+  modelCase = "PascalCase" // (default) Output models using pascal case (ex. UserModel, PostModel)
+  // modelCase             = "camelCase" // Output models using camel case (ex. userModel, postModel)
 
-//   modelSuffix = "Model" // (default) Suffix to apply to your prisma models when naming Zod schemas
+  modelSuffix = "Model" // (default) Suffix to apply to your prisma models when naming Zod schemas
 
-//   // useDecimalJs          = false // (default) represent the prisma Decimal type using as a JS number
-//   useDecimalJs = true // represent the prisma Decimal type using Decimal.js (as Prisma does)
+  // useDecimalJs          = false // (default) represent the prisma Decimal type using as a JS number
+  useDecimalJs = true // represent the prisma Decimal type using Decimal.js (as Prisma does)
 
-//   // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-by-null-values
-//   prismaJsonNullability = true // (default) uses prisma's scheme for JSON field nullability
-//   // prismaJsonNullability = false // allows null assignment to optional JSON fields
-// }
+  // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-by-null-values
+  prismaJsonNullability = true // (default) uses prisma's scheme for JSON field nullability
+  // prismaJsonNullability = false // allows null assignment to optional JSON fields
+}

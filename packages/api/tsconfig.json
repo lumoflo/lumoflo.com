@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "strict": true
+  },
+  "declaration": false,
+  "include": [
+    "index.ts"
+  ]
+}
