@@ -2,7 +2,6 @@
 import PrismaClient from "@server/prisma/prisma.service";
 
 export * from "@prisma/client";
-export * from "./prisma/zod";
 const globalForPrisma = globalThis as { prisma?: PrismaClient };
 
 export const db =
