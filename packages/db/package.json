@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
+    "db:migrate-prod": "pnpm with-env prisma migrate deploy",
     "db:migrate": "doppler run -- prisma migrate dev",
     "db:push": "doppler run -- prisma db push",
     "with-env": "dotenv -e ../../.env --"
