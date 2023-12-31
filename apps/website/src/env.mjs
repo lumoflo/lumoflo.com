@@ -7,38 +7,41 @@ export const env = createEnv({
    * built with invalid env vars.
    */
   server: {
-    //prisma
+    // prisma
     DATABASE_URL: z.string().url(),
     DIRECT_URL: z.string().url(),
 
-    //upstash
+    // upstash
     UPSTASH_URL: z.string(),
     UPSTASH_TOKEN: z.string(),
 
-    //clerk
+
+
+    // clerk
     CLERK_SECRET_KEY: z.string(),
     CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
     CLERK_JWT: z.string(),
 
-    //logsnag
+    // logsnag
 
     LOG_SNAG_API_TOKEN: z.string(),
 
-    // //resend
+    // resend
     // RESEND_API_KEY: z.string(),
     // RESEND_DOMAIN: z.string(),
 
-    // //instagram
+    // instagram
     // INSTAGRAM_TOKEN: z.string(),
 
-    //supabase
+    // supabase
     SUPABASE_URL: z.string().url(),
 
-    // //delivery
+    // delivery
     // DELHIVERY_API_KEY: z.string(),
 
-    //misc
+    // misc
     ENV: z.string(),
+    DEV_PORT : z.string(),
 
     // //slack
     // SLACK_TOKEN: z.string(),
@@ -46,7 +49,7 @@ export const env = createEnv({
     // SLACK_WEBHOOK_URL_CREATED: z.string().url(),
     // SLACK_WEBHOOK_URL_CSV_FILE: z.string().url(),
 
-    //trigger
+    // trigger
     TRIGGER_API_KEY: z.string(),
     TRIGGER_API_URL: z.string().url(),
     TRIGGER_ID: z.string(),
@@ -65,7 +68,7 @@ export const env = createEnv({
    * For them to be exposed to the client, prefix them with `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    // NEXT_PUBLIC_CLIENTVAR : z.string(),
     NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL: z.string(),
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string(),
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: z.string(),
@@ -75,51 +78,50 @@ export const env = createEnv({
    */
   runtimeEnv: {
     // clerk
-    LOG_SNAG_API_TOKEN: process.env.LOG_SNAG_API_TOKEN,
-    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
-    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL:
-      process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL,
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
-      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
-    CLERK_WEBHOOK_SIGNING_SECRET: process.env.CLERK_WEBHOOK_SIGNING_SECRET,
-    CLERK_JWT: process.env.CLERK_JWT,
+    LOG_SNAG_API_TOKEN : process.env.LOG_SNAG_API_TOKEN,
+    CLERK_SECRET_KEY : process.env.CLERK_SECRET_KEY,
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL : process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL,
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY : process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    NEXT_PUBLIC_CLERK_SIGN_IN_URL : process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
+    CLERK_WEBHOOK_SIGNING_SECRET : process.env.CLERK_WEBHOOK_SIGNING_SECRET,
+    CLERK_JWT : process.env.CLERK_JWT,
 
-    //prisma
-    DATABASE_URL: process.env.DATABASE_URL,
-    DIRECT_URL: process.env.DIRECT_URL,
+    // prisma
+    DATABASE_URL : process.env.DATABASE_URL,
+    DIRECT_URL : process.env.DIRECT_URL,
 
-    // //instagram
-    // INSTAGRAM_TOKEN: process.env.INSTAGRAM_TOKEN,
+    // instagram
+    // INSTAGRAM_TOKEN : process.env.INSTAGRAM_TOKEN,
 
-    // //resend
-    // RESEND_API_KEY: process.env.RESEND_API_KEY,
-    // RESEND_DOMAIN: process.env.RESEND_DOMAIN,
+    // resend
+    // RESEND_API_KEY : process.env.RESEND_API_KEY,
+    // RESEND_DOMAIN : process.env.RESEND_DOMAIN,
 
-    // //delhivery
-    // DELHIVERY_API_KEY: process.env.DELHIVERY_API_KEY,
+    // delhivery
+    // DELHIVERY_API_KEY : process.env.DELHIVERY_API_KEY,
 
     //upstack
-    UPSTASH_URL: process.env.UPSTASH_URL,
-    UPSTASH_TOKEN: process.env.UPSTASH_TOKEN,
+    UPSTASH_URL : process.env.UPSTASH_URL,
+    UPSTASH_TOKEN : process.env.UPSTASH_TOKEN,
 
     //node
-    ENV: process.env.ENV,
+    ENV : process.env.ENV,
+    DEV_PORT : process.env.DEV_PORT,
 
-    // //slack
-    // SLACK_TOKEN: process.env.SLACK_TOKEN,
-    // SLACK_WEBHOOK_URL_ACCEPTED: process.env.SLACK_WEBHOOK_URL_ACCEPTED,
-    // SLACK_WEBHOOK_URL_CREATED: process.env.SLACK_WEBHOOK_URL_CREATED,
-    // SLACK_WEBHOOK_URL_CSV_FILE: process.env.SLACK_WEBHOOK_URL_CSV_FILE,
+    // slack
+    // SLACK_TOKEN : process.env.SLACK_TOKEN,
+    // SLACK_WEBHOOK_URL_ACCEPTED : process.env.SLACK_WEBHOOK_URL_ACCEPTED,
+    // SLACK_WEBHOOK_URL_CREATED : process.env.SLACK_WEBHOOK_URL_CREATED,
+    // SLACK_WEBHOOK_URL_CSV_FILE : process.env.SLACK_WEBHOOK_URL_CSV_FILE,
 
-    //supabase
-    SUPABASE_URL: process.env.SUPABASE_URL,
+    // supabase
+    SUPABASE_URL : process.env.SUPABASE_URL,
 
-    //trigger
-    TRIGGER_API_KEY: process.env.TRIGGER_API_KEY,
-    TRIGGER_API_URL: process.env.TRIGGER_API_URL,
-    TRIGGER_ID: process.env.TRIGGER_ID,
-    TRIGGER_SUPABASE_ID: process.env.TRIGGER_SUPABASE_ID,
+    // trigger
+    TRIGGER_API_KEY : process.env.TRIGGER_API_KEY,
+    TRIGGER_API_URL : process.env.TRIGGER_API_URL,
+    TRIGGER_ID : process.env.TRIGGER_ID,
+    TRIGGER_SUPABASE_ID : process.env.TRIGGER_SUPABASE_ID,
 
     //vercel
     NEXT_PUBLIC_ROOT_DOMAIN: process.env.NEXT_PUBLIC_ROOT_DOMAIN,

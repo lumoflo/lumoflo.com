@@ -6,6 +6,8 @@ const config = {
   experimental: {
     externalDir: true,
   },
+/** @type {import("next").NextConfig} */
+const config = {
   images: {
     remotePatterns: [],
     domains: ["localhost", "images.lumoflo.com"],

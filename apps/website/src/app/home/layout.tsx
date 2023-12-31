@@ -5,6 +5,8 @@ import {env} from "~/env.mjs";
 import {MainNav} from "~/components/main-nav";
 import {ThemeToggle} from "~/components/mode-toggle";
 import * as React from "react";
+import GithubStarBtn from "~/components/githubStarBtn";
+import Footer from "~/components/footer";
 
 export default async function SiteLayout({params,children,}: {
     params: { domain: string };
@@ -28,7 +30,10 @@ export default async function SiteLayout({params,children,}: {
             <header className="sticky top-0 z-40 border-b bg-background">
                 <div className="container flex h-16 items-center justify-between py-4">
                     <MainNav items={mainStoreNav}/>
-                    <ThemeToggle />
+                    <div className={"flex flex-row gap-2"}>
+                        <GithubStarBtn className={"mt-1"}/>
+                        <ThemeToggle />
+                    </div>
                 </div>
             </header>
             <div className="container grid flex-1 gap-12 md:grid-cols-[1fr]">
@@ -36,6 +41,7 @@ export default async function SiteLayout({params,children,}: {
                     {children}
                 </main>
             </div>
+            <Footer/>
         </div>
     );
 }
