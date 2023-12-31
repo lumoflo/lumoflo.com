@@ -410,28 +410,6 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
 
-  packages/api:
-    dependencies:
-      '@lumoflo/db':
-        specifier: workspace:^
-        version: link:../db
-      '@lumoflo/utils':
-        specifier: workspace:*
-        version: link:../utils
-      '@ts-rest/core':
-        specifier: ^3.30.5
-        version: 3.30.5(zod@3.22.3)
-      zod:
-        specifier: ^3.21.4
-        version: 3.22.3
-    devDependencies:
-      '@types/node':
-        specifier: ^18.16.5
-        version: 18.16.5
-      typescript:
-        specifier: ^5.0.4
-        version: 5.2.2
-
   packages/auth:
     dependencies:
       '@next-auth/prisma-adapter':
