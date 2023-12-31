@@ -1,0 +1,191 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  username      String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  stores        Stores[]
+}
+
+
+model Stores {
+  id              String   @id @default(uuid()) /// @zod.uuid()
+  name            String
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  user            User?    @relation(fields: [user_id], references: [id])
+  user_id         String?
+  instagram_token String
+  username        String   @unique
+  posts           Posts[]
+  orders          Orders[]
+  subdomain       String?  @unique
+  customDomain    String?  @unique
+
+  @@index([id])
+}
+
+model Posts {
+  id              String   @id @default(uuid()) /// @zod.uuid()
+  post_link       String   @unique
+  caption         String
+  slides          Slides[]
+  post_created_at DateTime
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  store           Stores?  @relation(fields: [store_id], references: [id])
+  store_id        String?
+
+  @@index([id, post_link])
+}
+
+model Slides {
+  id              String   @id @default(uuid()) /// @zod.uuid()
+  post_link       String
+  slide_image_url String
+  post_caption    String
+  index           Int
+  quantity        Int      @default(1)
+  size            Size     @default(SMALL)
+  created_at      DateTime @default(now())
+  price           Float    @default(0.0)
+  orders          Orders?  @relation(fields: [order_id], references: [id])
+  order_id        String?
+  posts           Posts    @relation(fields: [post_id], references: [id])
+  post_id         String
+  post_timestamp  DateTime
+
+  @@unique([post_id, index])
+}
+
+model Orders {
+  id            String     @id @default(uuid()) /// @zod.uuid()
+  order_id      String     @unique @default(cuid())
+  status        Status     @default(PENDING)
+  store         Stores?    @relation(fields: [store_id], references: [id])
+  store_id      String?
+  prebook       Boolean    @default(false)
+  slides        Slides[]
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+  customer      Customers? @relation(fields: [customer_id], references: [id])
+  customer_id   String?
+  length        Float?     @default(0.0)
+  breadth       Float?     @default(0.0)
+  height        Float?     @default(0.0)
+  weight        Float?     @default(0.0)
+  otp           Otp[]
+  awb           String?
+  remarks       String?
+  courier       COURIER    @default(DEFAULT)
+  shipping_cost Float?     @default(0.0)
+  pickup        Pickups?   @relation(fields: [pickup_id], references: [id])
+  pickup_id     String?
+
+  @@index([customer_id, id])
+}
+
+model Customers {
+  id                 String   @id @default(uuid()) /// @zod.uuid()
+  name               String
+  email              String
+  phone_no           String
+  address            String
+  pincode            String
+  landmark           String?
+  locality           String
+  city               String
+  state              String
+  country            String
+  instagram_username String
+  orders             Orders[]
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+  otp                Otp[]
+
+  @@index([id])
+}
+
+model Pickups {
+  id              String   @id @default(uuid()) /// @zod.uuid()
+  pickup_id       Int      @unique
+  pickup_location String
+  pickup_date     String
+  orders          Orders[]
+
+  @@index([id, pickup_date])
+}
+
+model Otp {
+  id          String     @id @default(uuid()) /// @zod.uuid()
+  email       String
+  otp         String
+  order_id    String
+  order       Orders?    @relation(fields: [order_id], references: [id])
+  customer    Customers? @relation(fields: [customer_id], references: [id])
+  customer_id String?
+  expires     DateTime
+}
+
+enum Size {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
+enum Status {
+  PENDING
+  ACCEPTED
+  SHIPPED
+  PACKED
+  DELIVERED
+  CANCELLED
+  MANIFESTED
+  OUT_FOR_DELIVERY
+  HOLD
+  RTO
+}
+
+enum COURIER {
+  DEFAULT
+  DELHIVERY
+  OTHER
+}
+
+generator zod {
+  provider = "zod-prisma"
+  output   = "./zod" // (default) the directory where generated zod schemas will be saved
+
+  relationModel = false // (default) Create and export both plain and related models.
+  // relationModel         = "default" // Do not export model without relations.
+  // relationModel         = false // Do not generate related model
+
+  modelCase = "PascalCase" // (default) Output models using pascal case (ex. UserModel, PostModel)
+  // modelCase             = "camelCase" // Output models using camel case (ex. userModel, postModel)
+
+  modelSuffix = "Model" // (default) Suffix to apply to your prisma models when naming Zod schemas
+
+  // useDecimalJs          = false // (default) represent the prisma Decimal type using as a JS number
+  useDecimalJs = true // represent the prisma Decimal type using Decimal.js (as Prisma does)
+
+  // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-by-null-values
+  prismaJsonNullability = true // (default) uses prisma's scheme for JSON field nullability
+  // prismaJsonNullability = false // allows null assignment to optional JSON fields
+}
