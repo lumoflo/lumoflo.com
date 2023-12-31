@@ -1,10 +1,10 @@
 import { unstable_cache } from "next/cache";
-
-import { db } from "@lumoflo/db";
+import PrismaClient from "@server/prisma/prisma.service";
 
 import { env } from "~/env.mjs";
 
 export async function getSiteData(domain: string) {
+  const db = new PrismaClient();
   const subdomain = domain.endsWith(`.${env.NEXT_PUBLIC_ROOT_DOMAIN}`)
     ? domain.replace(`.${env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
     : null;

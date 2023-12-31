@@ -21,7 +21,6 @@
     "@heroicons/react": "1.0.6",
     "@hookform/resolvers": "^3.2.0",
     "@jsx-email/render": "^1.1.1",
-    "@lumoflo/db": "workspace:^",
     "@lumoflo/email": "workspace:*",
     "@lumoflo/instagram": "workspace:^",
     "@lumoflo/kv": "workspace:^",
@@ -80,8 +79,7 @@
     "swr": "^2.2.4",
     "uploadthing": "^5.7.4",
     "web": "^0.0.2",
-    "zod": "^3.21.4",
-    "zod-prisma": "^0.5.4"
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@lumoflo/eslint-config": "workspace:*",

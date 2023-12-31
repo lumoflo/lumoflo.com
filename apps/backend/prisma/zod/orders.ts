@@ -1,5 +1,6 @@
 import * as z from "zod"
 import { Status, COURIER } from "@prisma/client"
+import { CompleteStores, RelatedStoresModel, CompleteSlides, RelatedSlidesModel, CompleteCustomers, RelatedCustomersModel, CompleteOtp, RelatedOtpModel, CompletePickups, RelatedPickupsModel } from "./index"
 
 export const OrdersModel = z.object({
   id: z.string().uuid(),
@@ -20,3 +21,24 @@ export const OrdersModel = z.object({
   shipping_cost: z.number().nullish(),
   pickup_id: z.string().nullish(),
 })
+
+export interface CompleteOrders extends z.infer<typeof OrdersModel> {
+  store?: CompleteStores | null
+  slides: CompleteSlides[]
+  customer?: CompleteCustomers | null
+  otp: CompleteOtp[]
+  pickup?: CompletePickups | null
+}
+
+/**
+ * RelatedOrdersModel contains all relations on your model in addition to the scalars
+ *
+ * NOTE: Lazy required in case of potential circular dependencies within schema
+ */
+export const RelatedOrdersModel: z.ZodSchema<CompleteOrders> = z.lazy(() => OrdersModel.extend({
+  store: RelatedStoresModel.nullish(),
+  slides: RelatedSlidesModel.array(),
+  customer: RelatedCustomersModel.nullish(),
+  otp: RelatedOtpModel.array(),
+  pickup: RelatedPickupsModel.nullish(),
+}))

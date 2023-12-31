@@ -14,7 +14,6 @@ const config = {
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: [
-    "@lumoflo/db",
     "@lumoflo/utils",
     "@lumoflo/ui",
     "@lumoflo/kv",

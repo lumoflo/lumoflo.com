@@ -17,8 +17,6 @@ import {
 import { StoresService } from "src/stores/stores.service";
 import { UsersApi } from "src/ts-rest/users";
 
-import { CreateUserDto } from "./dto/create-user.dto";
-import { UpdateUserDto } from "./dto/update-user.dto";
 import { UsersService } from "./users.service";
 
 const c = nestControllerContract(UsersApi);
@@ -33,7 +31,23 @@ export class UsersController implements NestControllerInterface<typeof c> {
 
   @TsRest(c.getStores)
   async getStores(@Param("id") id: string) {
-    const stores = await this.storesService.findAll(id);
+    const stores = await this.storesService.findAll({
+      where: {
+        user_id: id,
+      },
+    });
     return { status: 201 as const, body: stores };
   }
+
+  @TsRest(c.getStores)
+  async getDomainSubDomains(@Param("id") id: string) {
+    const stores = await this.storesService.findAll({
+      where: {
+        user_id: id,
+        
+      },
+    });
+    return { status: 201 as const, body: stores };
+  }
+  
 }

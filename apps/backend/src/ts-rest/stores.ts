@@ -13,7 +13,11 @@ const GetResponse = z.object({
 export const StoresApi = c.router({
   getStores: {
     method: "GET",
-    path: "/posts/:id/slides",
+    path: "/stores",
+    query: z.object({
+      where: z.any(),
+      select: z.any(),
+    }),
     responses: {
       201: GetResponse,
     },

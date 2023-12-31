@@ -11,8 +11,15 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@server/*": ["./apps/backend/src/*"],
-      "@web/*": ["./apps/website/*"]
+      "@server/*": [
+        "./apps/backend/src/*"
+      ],
+      "@b-prisma/*": [
+        "./apps/backend/prisma/*"
+      ],
+      "@web/*": [
+        "./apps/website/*"
+      ]
     }
   }
 }

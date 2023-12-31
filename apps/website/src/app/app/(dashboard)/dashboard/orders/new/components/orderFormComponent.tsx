@@ -6,16 +6,12 @@ import { useAuth } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { OrdersApi } from "@server/ts-rest/orders";
 import { PostsApi } from "@server/ts-rest/posts";
-import { useMutation } from "@tanstack/react-query";
 import { initQueryClient } from "@ts-rest/react-query";
 import { Loader2, RefreshCcw } from "lucide-react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import useSWR, { Fetcher, useSWRConfig } from "swr";
-import useSWRMutation from "swr/mutation";
 import * as z from "zod";
 
-import { SlidesModel } from "@lumoflo/db/prisma/zod";
 import { Button, Input, Loader } from "@lumoflo/ui";
 
 import { Icons } from "~/components/icons";

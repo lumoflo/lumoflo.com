@@ -20,6 +20,6 @@ export const UsersApi = c.router({
     responses: {
       201: GetStoresResponse,
     },
-    summary: "Get all the store for a user.",
+    summary: "Get all the stores for a user.",
   },
 });

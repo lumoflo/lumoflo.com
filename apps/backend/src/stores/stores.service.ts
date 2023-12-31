@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { Prisma } from "@prisma/client";
 
 import { PrismaService } from "../prisma/prisma.service";
 import { CreateStoreDto } from "./dto/create-store.dto";
@@ -11,16 +12,13 @@ export class StoresService {
     return "This action adds a new store";
   }
 
-  findAll(user_id: string) {
+  findAll(param: {
+    where?: Prisma.StoresWhereInput;
+    select?: Prisma.StoresSelect;
+  }) {
     return this.prisma.stores.findMany({
-      where: {
-        user_id: user_id,
-      },
-      select: {
-        id: true,
-        name: true,
-        username: true,
-      },
+      where: param.where,
+      select: param.select,
     });
   }
 

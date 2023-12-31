@@ -24,7 +24,6 @@ model User {
   stores        Stores[]
 }
 
-
 model Stores {
   id              String   @id @default(uuid()) /// @zod.uuid()
   name            String
@@ -173,7 +172,7 @@ generator zod {
   provider = "zod-prisma"
   output   = "./zod" // (default) the directory where generated zod schemas will be saved
 
-  relationModel = false // (default) Create and export both plain and related models.
+  relationModel = true // (default) Create and export both plain and related models.
   // relationModel         = "default" // Do not export model without relations.
   // relationModel         = false // Do not generate related model
 
