@@ -26,13 +26,13 @@ import {
   User,
   X,
   type Icon as LucideIcon,
-  CheckCircle,
+  CheckCircle, Menu,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
 
 export const Icons = {
-  logo: Command,
+  logo: Menu,
   close: X,
   shoppingBag: ShoppingBag,
   spinner: Loader2,
