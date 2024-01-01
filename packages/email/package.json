@@ -8,9 +8,8 @@
     "export": "email export"
   },
   "dependencies": {
-    "@lumoflo/db": "workspace:^",
-    "@lumoflo/utils": "workspace:^",
     "@jsx-email/all": "^2.2.1",
+    "@lumoflo/utils": "workspace:^",
     "@react-email/components": "^0.0.11",
     "@react-email/render": "v0.0.9",
     "@react-email/tailwind": "^0.0.12",

@@ -55,13 +55,13 @@ export const env = createEnv({
     TRIGGER_ID: z.string(),
     TRIGGER_SUPABASE_ID: z.string(),
 
-
-    // vercel
-    NEXT_PUBLIC_ROOT_DOMAIN : z.string(),
-    NEXT_PUBLIC_VERCEL_DEPLOYMENT_SUFFIX : z.string(),
-    AUTH_BEARER_TOKEN : z.string(),
-    PROJECT_ID_VERCEL : z.string(),
-    TEAM_ID_VERCEL : z.string().optional() //optional
+    //vercel
+    NEXT_PUBLIC_ROOT_DOMAIN: z.string(),
+    NEXT_PUBLIC_BACKEND_URL: z.string(),
+    NEXT_PUBLIC_VERCEL_DEPLOYMENT_SUFFIX: z.string(),
+    AUTH_BEARER_TOKEN: z.string(),
+    PROJECT_ID_VERCEL: z.string(),
+    TEAM_ID_VERCEL: z.string().optional(), //optional
   },
   /**
    * Specify your client-side environment variables schema here.
@@ -123,12 +123,14 @@ export const env = createEnv({
     TRIGGER_ID : process.env.TRIGGER_ID,
     TRIGGER_SUPABASE_ID : process.env.TRIGGER_SUPABASE_ID,
 
-    // vercel
-    NEXT_PUBLIC_ROOT_DOMAIN : process.env.NEXT_PUBLIC_ROOT_DOMAIN,
-    NEXT_PUBLIC_VERCEL_DEPLOYMENT_SUFFIX : process.env.NEXT_PUBLIC_VERCEL_DEPLOYMENT_SUFFIX,
-    AUTH_BEARER_TOKEN : process.env.AUTH_BEARER_TOKEN,
-    PROJECT_ID_VERCEL : process.env.PROJECT_ID_VERCEL,
-    TEAM_ID_VERCEL : process.env.TEAM_ID_VERCEL // optional
+    //vercel
+    NEXT_PUBLIC_ROOT_DOMAIN: process.env.NEXT_PUBLIC_ROOT_DOMAIN,
+    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
+    NEXT_PUBLIC_VERCEL_DEPLOYMENT_SUFFIX:
+      process.env.NEXT_PUBLIC_VERCEL_DEPLOYMENT_SUFFIX,
+    AUTH_BEARER_TOKEN: process.env.AUTH_BEARER_TOKEN,
+    PROJECT_ID_VERCEL: process.env.PROJECT_ID_VERCEL,
+    TEAM_ID_VERCEL: process.env.TEAM_ID_VERCEL, //optional
   },
   skipValidation: !!process.env.CI || !!process.env.SKIP_ENV_VALIDATION,
 });
