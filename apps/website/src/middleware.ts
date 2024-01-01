@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import {env} from "~/env.mjs";
 import { authMiddleware } from "@clerk/nextjs";
 
-
-
 export const config = {
   matcher: [
     "/((?!.*\\..*|_next|_static/|_vercel|[\w-]+\.\w+).*)", "/", "/(api|trpc)(.*)"
@@ -11,6 +9,20 @@ export const config = {
 };
 
 //clkmail|clk2._domainkey|clk._domainkey|accounts|clerk|purelymail3._domainkey|purelymail2._domainkey|purelymail1._domainkey|_dmarc
+
+// Reserved subdomains
+const reservedSubdomains = [
+  "clkmail",
+  "clk2._domainkey",
+  "clk._domainkey",
+  "accounts",
+  "clerk",
+  "purelymail3._domainkey",
+  "purelymail2._domainkey",
+  "purelymail1._domainkey",
+  "_dmarc"
+];
+
 
 const middleware = (req: NextRequest) => {
   const url = req.nextUrl;
@@ -36,12 +48,19 @@ const middleware = (req: NextRequest) => {
       searchParams.length > 0 ? `?${searchParams}` : ""
   }`;
 
+
+  // Check if the hostname matches a reserved subdomain
+  if (reservedSubdomains.some(subdomain => hostname === `${subdomain}.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`)) {
+    return NextResponse.redirect(url);
+  }
+
   // rewrites for app pages
   if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {
     return NextResponse.rewrite(
         new URL(`/app${path === "/" ? "" : path}`, req.url),
     );
   }
+
 
   // rewrite root application to `/home` folder
   if (

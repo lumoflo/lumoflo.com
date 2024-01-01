@@ -7,16 +7,13 @@ import {
     AccordionTrigger,
 } from "@lumoflo/ui";
 import {GithubIcon} from "lucide-react"
-import Footer from "~/components/footer";
 import {BackgroundBeams} from "~/app/home/components/background-beams";
-import Image from "next/image";
 
 export default function HomePage() {
     return (
         <div className="flex min-h-screen flex-col space-y-5 bg-background pt-10">
             <div className={"flex flex-col space-y-5 "}>
             <div className={"flex flex-col space-y-5 z-10"  }>
-                    <Image src={"/img.jpg"} alt={"Image"} width={"300"} height={"300"}/>
                     <a className="flex flex-row gap-2 items-center bg-gray-500/10 hover:bg-gray-500/20 w-fit mx-auto px-4 py-2 border-2 rounded-full"
                        role="button" href="https://github.com/lumoflo/lumoflo.com"
                        target="_blank"
