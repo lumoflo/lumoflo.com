@@ -1,16 +1,13 @@
 import { ReactNode } from "react";
-import { notFound, redirect } from "next/navigation";
-import { getSiteData } from "~/lib/fetcher";
 import {env} from "~/env.mjs";
 import {MainNav} from "~/components/main-nav";
 import {ThemeToggle} from "~/components/mode-toggle";
 import * as React from "react";
-import GithubStarBtn from "~/app/home/components/github-star-btn";
 import Footer from "~/components/footer";
 import {Button} from "@lumoflo/ui";
 import Link from "next/link";
 
-export default async function SiteLayout({params,children,}: {
+export default async function SiteLayout({children}: {
     params: { domain: string };
     children: ReactNode;
 }) {
@@ -39,7 +36,7 @@ export default async function SiteLayout({params,children,}: {
                                 Login
                             </Button>
                         </Link>
-                        <Link href={`https://elegant-gibbon-19.accounts.dev/sign-up?redirect_url=http%3A%2F%2Fapp.localhost%3A3000%2Fsign-in`}>
+                        <Link href={`${env.BASE_URL == "localhost:3000" ? "https://elegant-gibbon-19.accounts.dev/sign-up?redirect_url=http%3A%2F%2Fapp.localhost%3A3000%2Fsign-in" : "https://accounts.lumoflo.com/sign-up?redirect_url=https%3A%2F%2Fapp.lumoflo.com%2Fsign-up"}`}>
                             <Button className={"text-white"}>
                                 Sign&nbsp;Up
                             </Button>
