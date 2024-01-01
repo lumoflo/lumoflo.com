@@ -1,7 +1,7 @@
 version: "3"
 services:
   app:
-    image: ghcr.io/lumoflo/lumoflo-backend:31f4d9aa2e570ff29ebf654ebeccbd662995afbf
+    image: ghcr.io/lumoflo/lumoflo-backend:latest
     restart: always
     ports:
       - "3002:3002"
