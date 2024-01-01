@@ -1,23 +1,7 @@
-import { WithAuthProp } from "@clerk/clerk-sdk-node";
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  NotAcceptableException,
-  Param,
-  Patch,
-  Post,
-  Query,
-  Req,
-  UnauthorizedException,
-} from "@nestjs/common";
-import { Prisma } from "@prisma/client";
+import { Controller, NotAcceptableException, Query, Req } from "@nestjs/common";
 import {
   NestControllerInterface,
-  NestRequestShapes,
   TsRest,
-  TsRestRequest,
   nestControllerContract,
 } from "@ts-rest/nest";
 import { StoresApi } from "src/ts-rest/stores";
@@ -40,8 +24,8 @@ export class StoresController implements NestControllerInterface<typeof c> {
     }
     const storesMetaData = await this.storesService.getADomain({
       where: subdomain
-        ? { subdomain: subdomain, user_id: req.user_id }
-        : { customDomain: customDomain, user_id: req.user_id },
+        ? { subdomain: subdomain}
+        : { customDomain: customDomain },
     });
 
     if (storesMetaData) {
