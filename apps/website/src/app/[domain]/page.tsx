@@ -38,6 +38,7 @@ export default async function SiteHomePage({
   params: { domain: string };
 }) {
   const domain = decodeURIComponent(params.domain);
+  console.log("Decord URI Component", domain)
   const data = await getSiteData(domain);
 
   if (!data) {

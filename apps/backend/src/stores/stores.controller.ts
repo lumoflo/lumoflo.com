@@ -24,8 +24,8 @@ export class StoresController implements NestControllerInterface<typeof c> {
     }
     const storesMetaData = await this.storesService.getADomain({
       where: subdomain
-        ? { subdomain: subdomain, user_id: req.user_id }
-        : { customDomain: customDomain, user_id: req.user_id },
+        ? { subdomain: subdomain}
+        : { customDomain: customDomain },
     });
 
     if (storesMetaData) {
