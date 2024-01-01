@@ -22,6 +22,7 @@ jobs:
             cd /root/lumoflo/lumoflo.com
             git pull
             docker compose down
+            docker compose pull
             docker compose up -d
       - name: Discord notification
         env:
