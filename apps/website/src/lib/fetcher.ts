@@ -1,24 +1,29 @@
 import { unstable_cache } from "next/cache";
-import { db } from "@lumoflo/db";
 
-import {env} from "~/env.mjs";
+import { env } from "~/env.mjs";
 
 export async function getSiteData(domain: string) {
-    const subdomain = domain.endsWith(`.${env.NEXT_PUBLIC_ROOT_DOMAIN}`)
-        ? domain.replace(`.${env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
-        : null;
+  const subdomain = domain.endsWith(`.${env.NEXT_PUBLIC_ROOT_DOMAIN}`)
+    ? domain.replace(`.${env.NEXT_PUBLIC_ROOT_DOMAIN}`, "")
+    : null;
 
-    return await unstable_cache(
-        async () => {
-            return db.stores.findUnique({
-                where: subdomain ? { subdomain: subdomain } : { customDomain: domain },
-                include: { user: true },
-            });
-        },
-        [`${domain}-metadata`],
+  return await unstable_cache(
+    async () =>
+      fetch(
+        `${env.NEXT_PUBLIC_BACKEND_URL}/stores/domain?${
+          subdomain ? `subdomain=${subdomain}` : `customDomain=${domain}`
+        }`,
         {
-            revalidate: 900,
-            tags: [`${domain}-metadata`],
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${env.CLERK_JWT}`,
+          },
         },
-    )();
+      ).then((res) => res.json()),
+    [`${domain}-metadata`],
+    {
+      revalidate: 900,
+      tags: [`${domain}-metadata`],
+    },
+  )();
 }
