@@ -55,7 +55,7 @@ export default function HomePage() {
                     operational complexities.
                 </p>
                 <div className={"grid grid-cols-4 gap-5 my-5 px-2"}>
-                    <div className={"col-span-1 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
+                    <div className={"col-span-full lg:col-span-1 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
                         <h2 className={"text-4xl -ml-2"}>😎</h2>
                         <h2 className={"font-bold text-lg my-2"}>Inventory Control</h2>
                         <p>
@@ -63,7 +63,7 @@ export default function HomePage() {
                             stockouts.
                         </p>
                     </div>
-                    <div className={"col-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
+                    <div className={"col-span-full lg:col-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
                         <h2 className={"text-4xl -ml-2"}>👜️</h2>
                         <h2 className={"font-bold text-lg my-2"}>Streamlined Order Management</h2>
                         <p>
@@ -72,7 +72,7 @@ export default function HomePage() {
                             any complexity.
                         </p>
                     </div>
-                    <div className={"col-span-1 row-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
+                    <div className={"col-span-full lg:col-span-1 row-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
                         <h2 className={"text-4xl -ml-2"}>🚚</h2>
                         <h2 className={"font-bold text-lg my-2"}>Simplified Logistics</h2>
                         <p>
@@ -83,7 +83,7 @@ export default function HomePage() {
 
                         </p>
                     </div>
-                    <div className={"col-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
+                    <div className={"col-span-full lg:col-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
                         <h2 className={"text-4xl -ml-2"}>🌐️</h2>
                         <h2 className={"font-bold text-lg my-2"}>Personalized Shop Page</h2>
                         <p>
@@ -92,7 +92,7 @@ export default function HomePage() {
                             customer experience and fostering engagement.
                         </p>
                     </div>
-                    <div className={"col-span-1 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
+                    <div className={"col-span-full lg:col-span-1 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
                         <h2 className={"text-4xl -ml-2"}>📈️</h2>
                         <h2 className={"font-bold text-lg my-2"}>Actionable Analytics</h2>
                         <p>
