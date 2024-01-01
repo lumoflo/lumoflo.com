@@ -29,14 +29,14 @@ export const metadata: Metadata = {
     url: "lumoflo.com",
     title: "Lumoflo",
     description: "Lumoflo simplifies the process for Instagram sellers by offering tools like order management and shipment fulfillment. This allows you to concentrate on your business without getting caught up in operational complexities.",
-    images: [`/og.jpg`],
+    images: [`https://lumoflo.com/og.jpg`],
     siteName: "Lumoflo",
   },
   twitter: {
     card: "summary_large_image",
     title: "Lumoflo",
     description: "",
-    images: [`/og.jpg`],
+    images: [`https://lumoflo.com/og.jpg`],
     creator: "@lumoflo",
   },
   robots: {
