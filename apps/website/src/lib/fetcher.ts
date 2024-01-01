@@ -8,8 +8,8 @@ export async function getSiteData(domain: string) {
     : null;
 
   return await unstable_cache(
-    async () =>
-      fetch(
+    async () => {
+      const data = await fetch(
         `${env.NEXT_PUBLIC_BACKEND_URL}/stores/domain?${
           subdomain ? `subdomain=${subdomain}` : `customDomain=${domain}`
         }`,
@@ -19,7 +19,11 @@ export async function getSiteData(domain: string) {
             Authorization: `Bearer ${env.CLERK_JWT}`,
           },
         },
-      ).then((res) => res.json()),
+      ).then((res) => res.json());
+      console.log({ pageData: data });
+
+      return data;
+    },
     [`${domain}-metadata`],
     {
       revalidate: 900,
