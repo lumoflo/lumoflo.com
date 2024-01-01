@@ -3,9 +3,9 @@ on:
   workflow_run:
     workflows: ["CI/CD Pipeline"]
     branches: [main]
-    types: 
+    types:
       - completed
-jobs: Deploy via ssh
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
