@@ -22,7 +22,7 @@ export default function HomePage() {
                         Star us on Github
                         <GithubIcon/>
                     </a>
-                    <h1 className="md:text-8xl text-4xl font-bold text-foreground text-center">
+                    <h1 className="md:text-8xl text-6xl font-bold text-foreground text-center">
                         Sell Smart, <br/> Stress Less!
                     </h1>
                     <h2 className="md:text-2xl textg-lg font-medium text-foreground text-center">
