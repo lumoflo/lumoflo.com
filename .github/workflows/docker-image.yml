@@ -2,26 +2,26 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Build the Docker image
-      run: |
-        docker build . --file Dockerfile --tag lumoflo-backend:$(date +%s)
+      - name: Build the Docker image
+        run: |
+          docker build . --file Dockerfile --tag lumoflo-backend:${{ github.sha }}
 
-    - name: Log in to GitHub Container Registry
-      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    - name: Push Docker image to GitHub Container Registry
-      run: |
-        docker tag lumoflo-backend:$(date +%s) ghcr.io/${{ github.repository_owner }}/lumoflo-backend:$(date +%s)
-        docker push ghcr.io/${{ github.repository_owner }}/lumoflo-backend:$(date +%s)
+      - name: Push Docker image to GitHub Container Registry
+        run: |
+          docker tag lumoflo-backend:${{ github.sha }} ghcr.io/${{ github.repository_owner }}/lumoflo-backend:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository_owner }}/lumoflo-backend:${{ github.sha }}
