@@ -18,7 +18,7 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
  
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 239 84% 67%;
     --primary-foreground: 210 40% 98%;
  
     --secondary: 210 40% 96.1%;
@@ -54,7 +54,7 @@
     --card: 224 71% 4%;
     --card-foreground: 213 31% 91%;
  
-    --primary: 210 40% 98%;
+    --primary: 239 84% 67%;
     --primary-foreground: 222.2 47.4% 1.2%;
  
     --secondary: 222.2 47.4% 11.2%;
@@ -63,7 +63,7 @@
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
  
-    --ring: 216 34% 17%;
+    --ring: 239 42% 24%;
  
     --radius: 0.5rem;
   }

@@ -22,8 +22,15 @@ import { StoresController } from "./stores/stores.controller";
 import { StoresModule } from "./stores/stores.module";
 import { UsersModule } from "./users/users.module";
 
+import { ConfigModule } from '@nestjs/config';
+import { config } from './config/config';
+
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [config]
+    }),
     OrdersModule,
     LoggerModule.forRoot({
       pinoHttp: {

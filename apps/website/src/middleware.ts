@@ -10,6 +10,8 @@ export const config = {
   ],
 };
 
+//clkmail|clk2._domainkey|clk._domainkey|accounts|clerk|purelymail3._domainkey|purelymail2._domainkey|purelymail1._domainkey|_dmarc
+
 const middleware = (req: NextRequest) => {
   const url = req.nextUrl;
 

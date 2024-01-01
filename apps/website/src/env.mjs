@@ -42,6 +42,7 @@ export const env = createEnv({
     // misc
     ENV: z.string(),
     DEV_PORT : z.string(),
+    BASE_URL : z.string(),
 
     // //slack
     // SLACK_TOKEN: z.string(),
@@ -107,6 +108,7 @@ export const env = createEnv({
     //node
     ENV : process.env.ENV,
     DEV_PORT : process.env.DEV_PORT,
+    BASE_URL: process.env.BASE_URL,
 
     // slack
     // SLACK_TOKEN : process.env.SLACK_TOKEN,
@@ -131,6 +133,7 @@ export const env = createEnv({
     AUTH_BEARER_TOKEN: process.env.AUTH_BEARER_TOKEN,
     PROJECT_ID_VERCEL: process.env.PROJECT_ID_VERCEL,
     TEAM_ID_VERCEL: process.env.TEAM_ID_VERCEL, //optional
+
   },
   skipValidation: !!process.env.CI || !!process.env.SKIP_ENV_VALIDATION,
 });
