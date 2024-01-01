@@ -23,3 +23,9 @@ jobs:
             git pull
             docker compose down
             docker compose up -d
+      - name: Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "The backend has been deployed now. GitHub commit-hash: ${{ github.sha }}"
