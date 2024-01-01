@@ -28,15 +28,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "lumoflo.com",
     title: "Lumoflo",
-    description: "",
-    images: [`/cl_og.jpg`],
+    description: "Lumoflo simplifies the process for Instagram sellers by offering tools like order management and shipment fulfillment. This allows you to concentrate on your business without getting caught up in operational complexities.",
+    images: [`/og.jpg`],
     siteName: "Lumoflo",
   },
   twitter: {
     card: "summary_large_image",
     title: "Lumoflo",
     description: "",
-    images: [`/cl_og.jpg`],
+    images: [`/og.jpg`],
     creator: "@lumoflo",
   },
   robots: {
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     icon: [
       {
         media: "(prefers-color-scheme: light)",
-        url: "/favicon.ico",
-        href: "/favicon.ico",
+        url: "/favicon.svg",
+        href: "/favicon.svg",
       },
       {
         media: "(prefers-color-scheme: dark)",
-        url: "/favicon-dark.ico",
-        href: "/favicon-dark.ico",
+        url: "/favicon.svg",
+        href: "/favicon.svg",
       },
     ],
   },
