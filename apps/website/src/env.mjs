@@ -15,8 +15,6 @@ export const env = createEnv({
     UPSTASH_URL: z.string(),
     UPSTASH_TOKEN: z.string(),
 
-
-
     // clerk
     CLERK_SECRET_KEY: z.string(),
     CLERK_WEBHOOK_SIGNING_SECRET: z.string(),
@@ -41,8 +39,7 @@ export const env = createEnv({
 
     // misc
     ENV: z.string(),
-    DEV_PORT : z.string(),
-    BASE_URL : z.string(),
+    BASE_URL: z.string(),
 
     // //slack
     // SLACK_TOKEN: z.string(),
@@ -79,17 +76,19 @@ export const env = createEnv({
    */
   runtimeEnv: {
     // clerk
-    LOG_SNAG_API_TOKEN : process.env.LOG_SNAG_API_TOKEN,
-    CLERK_SECRET_KEY : process.env.CLERK_SECRET_KEY,
-    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL : process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL,
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY : process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    NEXT_PUBLIC_CLERK_SIGN_IN_URL : process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
-    CLERK_WEBHOOK_SIGNING_SECRET : process.env.CLERK_WEBHOOK_SIGNING_SECRET,
-    CLERK_JWT : process.env.CLERK_JWT,
+    LOG_SNAG_API_TOKEN: process.env.LOG_SNAG_API_TOKEN,
+    CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL:
+      process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL,
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    NEXT_PUBLIC_CLERK_SIGN_IN_URL: process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL,
+    CLERK_WEBHOOK_SIGNING_SECRET: process.env.CLERK_WEBHOOK_SIGNING_SECRET,
+    CLERK_JWT: process.env.CLERK_JWT,
 
     // prisma
-    DATABASE_URL : process.env.DATABASE_URL,
-    DIRECT_URL : process.env.DIRECT_URL,
+    DATABASE_URL: process.env.DATABASE_URL,
+    DIRECT_URL: process.env.DIRECT_URL,
 
     // instagram
     // INSTAGRAM_TOKEN : process.env.INSTAGRAM_TOKEN,
@@ -102,12 +101,11 @@ export const env = createEnv({
     // DELHIVERY_API_KEY : process.env.DELHIVERY_API_KEY,
 
     //upstack
-    UPSTASH_URL : process.env.UPSTASH_URL,
-    UPSTASH_TOKEN : process.env.UPSTASH_TOKEN,
+    UPSTASH_URL: process.env.UPSTASH_URL,
+    UPSTASH_TOKEN: process.env.UPSTASH_TOKEN,
 
     //node
-    ENV : process.env.ENV,
-    DEV_PORT : process.env.DEV_PORT,
+    ENV: process.env.ENV,
     BASE_URL: process.env.BASE_URL,
 
     // slack
@@ -117,13 +115,13 @@ export const env = createEnv({
     // SLACK_WEBHOOK_URL_CSV_FILE : process.env.SLACK_WEBHOOK_URL_CSV_FILE,
 
     // supabase
-    SUPABASE_URL : process.env.SUPABASE_URL,
+    SUPABASE_URL: process.env.SUPABASE_URL,
 
     // trigger
-    TRIGGER_API_KEY : process.env.TRIGGER_API_KEY,
-    TRIGGER_API_URL : process.env.TRIGGER_API_URL,
-    TRIGGER_ID : process.env.TRIGGER_ID,
-    TRIGGER_SUPABASE_ID : process.env.TRIGGER_SUPABASE_ID,
+    TRIGGER_API_KEY: process.env.TRIGGER_API_KEY,
+    TRIGGER_API_URL: process.env.TRIGGER_API_URL,
+    TRIGGER_ID: process.env.TRIGGER_ID,
+    TRIGGER_SUPABASE_ID: process.env.TRIGGER_SUPABASE_ID,
 
     //vercel
     NEXT_PUBLIC_ROOT_DOMAIN: process.env.NEXT_PUBLIC_ROOT_DOMAIN,
@@ -133,7 +131,6 @@ export const env = createEnv({
     AUTH_BEARER_TOKEN: process.env.AUTH_BEARER_TOKEN,
     PROJECT_ID_VERCEL: process.env.PROJECT_ID_VERCEL,
     TEAM_ID_VERCEL: process.env.TEAM_ID_VERCEL, //optional
-
   },
   skipValidation: !!process.env.CI || !!process.env.SKIP_ENV_VALIDATION,
 });
