@@ -21,6 +21,20 @@ export class StoresService {
       select: param.select,
     });
   }
+  getAllDomains() {
+    return this.prisma.stores.findMany({
+      select: {
+        subdomain: true,
+        customDomain: true,
+      },
+    });
+  }
+
+  getADomain(param: { where: Prisma.StoresFindUniqueArgs["where"] }) {
+    return this.prisma.stores.findUnique({
+      where: param.where,
+    });
+  }
 
   findOne(id: number) {
     return `This action returns a #${id} store`;

@@ -4,6 +4,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotAcceptableException,
   Param,
   Patch,
   Post,
@@ -12,48 +13,47 @@ import {
   UnauthorizedException,
 } from "@nestjs/common";
 import { Prisma } from "@prisma/client";
+import {
+  NestControllerInterface,
+  NestRequestShapes,
+  TsRest,
+  TsRestRequest,
+  nestControllerContract,
+} from "@ts-rest/nest";
+import { StoresApi } from "src/ts-rest/stores";
 
-import { CreateStoreDto } from "./dto/create-store.dto";
-import { UpdateStoreDto } from "./dto/update-store.dto";
 import { StoresService } from "./stores.service";
 
+const c = nestControllerContract(StoresApi);
+
 @Controller("stores")
-export class StoresController {
+export class StoresController implements NestControllerInterface<typeof c> {
   constructor(private readonly storesService: StoresService) {}
-
-  @Post()
-  create(@Body() createStoreDto: CreateStoreDto) {
-    return this.storesService.create(createStoreDto);
-  }
-
-  @Get()
-  getAllSubDomains(@Req() request: WithAuthProp<Request>) {
-    const user_id = request.auth?.userId;
-    if (!user_id) {
-      throw new UnauthorizedException("No user_id");
+  @TsRest(c.getADomain)
+  async getADomain(
+    @Req() req: Request & { user_id: string },
+    @Query("subdomain") subdomain: string,
+    @Query("customDomain") customDomain: string,
+  ) {
+    if (!subdomain && !customDomain) {
+      throw new NotAcceptableException();
     }
-    return this.storesService.findAll({
-      where: {
-        user_id,
-      },
-      select: {
-        subdomain: true,
-        customDomain: true,
-      },
+    const storesMetaData = await this.storesService.getADomain({
+      where: subdomain
+        ? { subdomain: subdomain, user_id: req.user_id }
+        : { customDomain: customDomain, user_id: req.user_id },
     });
-  }
-  @Get(":id")
-  findOne(@Param("id") id: string) {
-    return this.storesService.findOne(+id);
+
+    if (storesMetaData) {
+      const { instagram_token: _, ...storeDataWithoutTokem } = storesMetaData;
+      return { status: 201 as const, body: storeDataWithoutTokem };
+    }
+    return { status: 201 as const, body: null };
   }
 
-  @Patch(":id")
-  update(@Param("id") id: string, @Body() updateStoreDto: UpdateStoreDto) {
-    return this.storesService.update(+id, updateStoreDto);
-  }
-
-  @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.storesService.remove(+id);
+  @TsRest(c.getDomains)
+  async getDomains() {
+    const domains = await this.storesService.getAllDomains();
+    return { status: 201 as const, body: domains };
   }
 }

@@ -4,23 +4,30 @@ import { z } from "zod";
 
 const c = initContract();
 
-const PostsSchema = StoresModel;
-const GetResponse = z.object({
-  id: z.string(),
-  name: z.string(),
-  username: z.string(),
-});
 export const StoresApi = c.router({
-  getStores: {
+  getDomains: {
     method: "GET",
-    path: "/stores",
+    path: "/domains",
+    responses: {
+      201: z
+        .object({
+          subdomain: z.string().nullable(),
+          customDomain: z.string().nullable(),
+        })
+        .array(),
+    },
+    summary: "Get all the custom-domains and subdomains.",
+  },
+  getADomain: {
+    method: "GET",
+    path: "/domain",
     query: z.object({
-      where: z.any(),
-      select: z.any(),
+      subdomain: z.string().nullable(),
+      customDomain: z.string().nullable(),
     }),
     responses: {
-      201: GetResponse,
+      201: StoresModel.omit({ instagram_token: true }).nullable(),
     },
-    summary: "Get all the slides for a post.",
+    summary: "Get a custom-domain or subdomain.",
   },
 });

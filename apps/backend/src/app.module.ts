@@ -18,9 +18,9 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { OrdersController } from "./orders/orders.controller";
 import { OrdersService } from "./orders/orders.service";
 import { PostsModule } from "./posts/posts.module";
+import { StoresController } from "./stores/stores.controller";
 import { StoresModule } from "./stores/stores.module";
 import { UsersModule } from "./users/users.module";
-import { StoresController } from "./stores/stores.controller";
 
 @Module({
   imports: [
@@ -62,7 +62,7 @@ export class AppModule implements NestModule {
           next();
         },
       )
-      .forRoutes(OrdersController,StoresController);
+      .forRoutes(OrdersController, StoresController);
   }
 }
 

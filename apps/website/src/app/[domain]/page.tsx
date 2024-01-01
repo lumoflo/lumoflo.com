@@ -1,23 +1,22 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import PrismaClient from "@server/prisma/prisma.service";
 
 import { env } from "~/env.mjs";
 import { getSiteData } from "~/lib/fetcher";
 
 export async function generateStaticParams() {
-  const db = new PrismaClient();
-  const allSites = await db.stores.findMany({
-    select: {
-      subdomain: true,
-      customDomain: true,
-    },
-    // feel free to remove this filter if you want to generate paths for all sites
-    where: {
-      subdomain: "api",
+  const req = await fetch(`${env.NEXT_PUBLIC_BACKEND_URL}/stores/domains`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${env.CLERK_JWT}`,
     },
   });
+  if (!req.ok) {
+    console.log("Failed to fetch domains");
+  }
 
+  const allSites = await req.json();
+  console.log({ allSites });
   return (
     allSites
       // @ts-ignore
