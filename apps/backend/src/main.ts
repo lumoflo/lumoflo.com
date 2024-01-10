@@ -10,9 +10,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
   const configService = app.get(ConfigService);
   const port = configService.get<number>('port') || 3002;
+  console.log(configService.get<number>('port'))
   app.useLogger(app.get(Logger));
   app.enableCors();
   // ts-ignore
   await app.listen(port);
 }
+
 bootstrap();

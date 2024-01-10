@@ -15,7 +15,7 @@
     "db:migrate-prod": "turbo db:migrate-prod",
     "db:push": "turbo db:push db:generate",
     "db:seed": "turbo db:seed",
-    "dev": "doppler run --  turbo dev --parallel",
+    "dev": "doppler run --preserve-env --  turbo dev --parallel",
     "dev-web": "turbo dev --filter web",
     "dev-admin": "turbo dev --filter admin",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",

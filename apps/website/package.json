@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.1",
+    "@clerk/themes": "^1.7.9",
     "@headlessui/tailwindcss": "^0.2.0",
     "@heroicons/react": "1.0.6",
     "@hookform/resolvers": "^3.2.0",

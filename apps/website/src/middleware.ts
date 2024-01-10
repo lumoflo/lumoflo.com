@@ -93,6 +93,6 @@ export default authMiddleware({
     "/api/status",
     "/api/uploadthing",
     "/api/slides",
-    "/",
+    "/"
   ],
 });
