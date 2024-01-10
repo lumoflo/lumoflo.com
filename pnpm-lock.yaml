@@ -312,6 +312,9 @@ importers:
       npm:
         specifier: ^9.8.1
         version: 9.8.1
+      nuqs:
+        specifier: ^1.14.0
+        version: 1.14.0(next@14.0.3)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -11646,6 +11649,10 @@ packages:
       yallist: 4.0.0
     dev: false
 
+  /mitt@3.0.1:
+    resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
+    dev: false
+
   /mkdirp@0.3.5:
     resolution: {integrity: sha512-8OCq0De/h9ZxseqzCH8Kw/Filf5pF/vMI6+BH7Lu0jXz2pqYCjTAQRolSxRIi+Ax+oCCjlxoJMP0YQ4XlrQNHg==}
     deprecated: Legacy versions of mkdirp are no longer supported. Please update to mkdirp 1.x. (Note that the API surface has changed to use Promises in 1.x.)
@@ -12034,6 +12041,15 @@ packages:
 
   /nprogress@0.2.0:
     resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
+
+  /nuqs@1.14.0(next@14.0.3):
+    resolution: {integrity: sha512-bdJlLFTwowc6oA8dvhY+s52lIW3F8J6mTksIoDo414D/6P7uf1039XJiRtZXi6rk6374I7e4Pn//YjMJ2pYWbQ==}
+    peerDependencies:
+      next: '>=13.4 <14.0.2 || ^14.0.3'
+    dependencies:
+      mitt: 3.0.1
+      next: 14.0.3(@babel/core@7.23.0)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /nwsapi@2.2.7:

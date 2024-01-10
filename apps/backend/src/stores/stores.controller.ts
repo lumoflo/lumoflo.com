@@ -1,4 +1,10 @@
-import { Controller, NotAcceptableException, Query, Req } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  NotAcceptableException,
+  Query,
+  Req,
+} from "@nestjs/common";
 import {
   NestControllerInterface,
   TsRest,
@@ -10,9 +16,49 @@ import { StoresService } from "./stores.service";
 
 const c = nestControllerContract(StoresApi);
 
-@Controller("stores")
+@Controller()
 export class StoresController implements NestControllerInterface<typeof c> {
   constructor(private readonly storesService: StoresService) {}
+
+  @TsRest(c.addStore)
+  async addStore(
+    @Req() req: Request & { user_id: string },
+    @Body()
+    c: {
+      name: string;
+      instagram_token: string;
+      username: string;
+    },
+  ) {
+    const domain = this.storesService.generateSubdomain({ name: c.name });
+    const storeMetaData = await this.storesService.create({
+      data: {
+        name: c.name,
+        subdomain: domain,
+        customDomain: domain,
+        username: c.username,
+        instagram_token: c.instagram_token,
+        user_id: req.user_id,
+      },
+    });
+    return { status: 201 as const, body: storeMetaData };
+  }
+
+  @TsRest(c.getStores)
+  async getStores(@Req() req: Request & { user_id: string }) {
+    const storesMetaData = await this.storesService.findAll({
+      where: { user_id: req.user_id },
+      select: {
+        id: true,
+        name: true,
+        subdomain: true,
+        customDomain: true,
+        created_at: true,
+      },
+    });
+    return { status: 201 as const, body: storesMetaData };
+  }
+
   @TsRest(c.getADomain)
   async getADomain(
     @Req() req: Request & { user_id: string },
@@ -24,7 +70,7 @@ export class StoresController implements NestControllerInterface<typeof c> {
     }
     const storesMetaData = await this.storesService.getADomain({
       where: subdomain
-        ? { subdomain: subdomain}
+        ? { subdomain: subdomain }
         : { customDomain: customDomain },
     });
 

@@ -3,9 +3,16 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": [
+        "./src/*"
+      ]
     },
-    "plugins": [{ "name": "next" }]
+    "jsx": "react",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "exclude": [],
   "include": [

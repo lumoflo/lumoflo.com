@@ -7,6 +7,19 @@ import { PrismaService } from "../prisma/prisma.service";
 export class StoresService {
   constructor(private readonly prisma: PrismaService) {}
 
+  generateSubdomain(param: { name: string }) {
+    return param.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, "-")
+      .replace(/-+/g, "-");
+  }
+
+  create(param: { data: Prisma.StoresCreateArgs["data"] }) {
+    return this.prisma.stores.create({
+      data: param.data,
+    });
+  }
+
   findAll(param: {
     where?: Prisma.StoresWhereInput;
     select?: Prisma.StoresSelect;

@@ -50,6 +50,7 @@ const middleware = (req: NextRequest) => {
     searchParams.length > 0 ? `?${searchParams}` : ""
   }`;
 
+
   // Check if the hostname matches a reserved subdomain
   if (
     reservedSubdomains.some(
@@ -59,6 +60,7 @@ const middleware = (req: NextRequest) => {
   ) {
     return NextResponse.redirect(url);
   }
+
 
   // rewrites for app pages
   if (hostname == `app.${process.env.NEXT_PUBLIC_ROOT_DOMAIN}`) {

@@ -21,33 +21,11 @@ import { UsersService } from "./users.service";
 
 const c = nestControllerContract(UsersApi);
 type RequestShapes = NestRequestShapes<typeof c>;
-
+//implements NestControllerInterface<typeof c>
 @Controller()
-export class UsersController implements NestControllerInterface<typeof c> {
+export class UsersController {
   constructor(
     private readonly usersService: UsersService,
     private readonly storesService: StoresService,
   ) {}
-
-  @TsRest(c.getStores)
-  async getStores(@Param("id") id: string) {
-    const stores = await this.storesService.findAll({
-      where: {
-        user_id: id,
-      },
-    });
-    return { status: 201 as const, body: stores };
-  }
-
-  @TsRest(c.getStores)
-  async getDomainSubDomains(@Param("id") id: string) {
-    const stores = await this.storesService.findAll({
-      where: {
-        user_id: id,
-        
-      },
-    });
-    return { status: 201 as const, body: stores };
-  }
-  
 }
