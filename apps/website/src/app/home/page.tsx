@@ -56,7 +56,7 @@ export default function HomePage() {
                 </p>
                 <div className={"grid grid-cols-4 gap-5 my-5 px-2"}>
                     <div className={"col-span-full lg:col-span-1 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
-                        <h2 className={"text-4xl -ml-2"}>😎</h2>
+                        <h2 className={"text-4xl md:-ml-2 -ml-1"}>😎</h2>
                         <h2 className={"font-bold text-lg my-2"}>Inventory Control</h2>
                         <p>
                             Keep a finger on the pulse of your inventory levels, enabling timely restocking and avoiding
@@ -64,7 +64,7 @@ export default function HomePage() {
                         </p>
                     </div>
                     <div className={"col-span-full lg:col-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
-                        <h2 className={"text-4xl -ml-2"}>👜️</h2>
+                        <h2 className={"text-4xl md:-ml-2 -ml-1"}>👜️</h2>
                         <h2 className={"font-bold text-lg my-2"}>Streamlined Order Management</h2>
                         <p>
                             Lumoflo's order management is a seamless, all-in-one solution. It simplifies the entire
@@ -73,7 +73,7 @@ export default function HomePage() {
                         </p>
                     </div>
                     <div className={"col-span-full lg:col-span-1 row-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
-                        <h2 className={"text-4xl -ml-2"}>🚚</h2>
+                        <h2 className={"text-4xl md:-ml-2 -ml-1"}>🚚</h2>
                         <h2 className={"font-bold text-lg my-2"}>Simplified Logistics</h2>
                         <p>
                             Lumoflo streamlines logistics by seamlessly integrating with Delhivery. This integration
@@ -84,7 +84,7 @@ export default function HomePage() {
                         </p>
                     </div>
                     <div className={"col-span-full lg:col-span-2 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
-                        <h2 className={"text-4xl -ml-2"}>🌐️</h2>
+                        <h2 className={"text-4xl md:-ml-2 -ml-1"}>🌐️</h2>
                         <h2 className={"font-bold text-lg my-2"}>Personalized Shop Page</h2>
                         <p>
                             Lumoflo crafts individualized shop pages for sellers, enabling order tracking and reviews.
@@ -93,7 +93,7 @@ export default function HomePage() {
                         </p>
                     </div>
                     <div className={"col-span-full lg:col-span-1 border bg-gray-500/10 p-4 rounded"} tabIndex={"0"}>
-                        <h2 className={"text-4xl -ml-2"}>📈️</h2>
+                        <h2 className={"text-4xl md:-ml-2 -ml-1"}>📈️</h2>
                         <h2 className={"font-bold text-lg my-2"}>Actionable Analytics</h2>
                         <p>
                             Lumoflo empowers insights for smarter decisions and enhanced selling strategies
